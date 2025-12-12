@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, Image as ImageIcon, Video, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -130,6 +130,70 @@ const Lightbox = ({ media, type, isOpen, onClose, onNext, onPrev, currentIndex, 
   );
 };
 
+// Media Item Component for proper ref handling
+const MediaItem = ({ item, idx, onOpenLightbox }) => {
+  const videoRef = useRef(null);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.02 }}
+      className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-900 shadow-lg hover:shadow-2xl transition-all duration-500"
+      onClick={() => onOpenLightbox(item.src, item.type, idx)}
+      onMouseEnter={() => {
+        if (item.type === 'video' && videoRef.current) {
+          videoRef.current.play().catch(() => {});
+        }
+      }}
+      onMouseLeave={() => {
+        if (item.type === 'video' && videoRef.current) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
+      }}
+    >
+      {item.type === 'image' ? (
+        <img
+          src={item.src}
+          alt={`Construction progress ${idx + 1}`}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          loading="lazy"
+        />
+      ) : (
+        <video
+          ref={videoRef}
+          src={item.src}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          muted
+          playsInline
+          loop
+        />
+      )}
+      
+      {/* Elegant overlay on hover */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute bottom-3 left-3 right-3">
+          <div className="flex items-center gap-2 text-white text-xs font-medium">
+            {item.type === 'image' ? (
+              <ImageIcon size={16} className="opacity-90" />
+            ) : (
+              <Video size={16} className="opacity-90" />
+            )}
+            <span className="opacity-90">
+              {item.type === 'image' ? 'Photo' : 'Video'}
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      {/* Subtle border on hover */}
+      <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/20 rounded-2xl transition-all duration-300 pointer-events-none" />
+    </motion.div>
+  );
+};
+
 const Progress = () => {
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
@@ -210,68 +274,25 @@ const Progress = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <span className="inline-block py-2 px-4 mb-6 rounded-full bg-white/10 text-white font-bold text-sm uppercase tracking-wider">
+            <span className="inline-block py-2.5 px-5 mb-6 rounded-full bg-white/10 backdrop-blur-sm text-white font-semibold text-xs uppercase tracking-widest border border-white/20">
               Project Updates
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Progress on the Whole Project</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">Progress on the Whole Project</h1>
+            <p className="text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed">
               Watch our community take shape. See the latest developments and milestones as we build Cliftonville Gardens.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Banner */}
-      <section className="py-12 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="text-3xl md:text-4xl font-bold text-[#003399] mb-2">{constructionImages.length}</div>
-              <div className="text-sm text-slate-600 uppercase tracking-wide">Progress Photos</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="text-3xl md:text-4xl font-bold text-[#003399] mb-2">{constructionVideos.length}</div>
-              <div className="text-sm text-slate-600 uppercase tracking-wide">Progress Videos</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="text-3xl md:text-4xl font-bold text-[#f59e0b] mb-2">In Progress</div>
-              <div className="text-sm text-slate-600 uppercase tracking-wide">Status</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="text-3xl md:text-4xl font-bold text-[#003399] mb-2">2025</div>
-              <div className="text-sm text-slate-600 uppercase tracking-wide">Target Year</div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Filter Tabs */}
-      <section className="py-8 bg-slate-50 sticky top-0 z-40 border-b border-slate-200">
+      <section className="py-6 bg-gradient-to-b from-white to-slate-50 sticky top-0 z-40 border-b border-slate-200/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-3">
             {[
-              { id: 'all', label: 'All Media', count: allMedia.length },
-              { id: 'images', label: 'Photos', count: constructionImages.length },
-              { id: 'videos', label: 'Videos', count: constructionVideos.length },
+              { id: 'all', label: 'All Media' },
+              { id: 'images', label: 'Photos' },
+              { id: 'videos', label: 'Videos' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -279,13 +300,13 @@ const Progress = () => {
                   setActiveTab(tab.id);
                   closeLightbox();
                 }}
-                className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${
+                className={`px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 ${
                   activeTab === tab.id
-                    ? 'bg-[#003399] text-white shadow-lg'
-                    : 'bg-white text-slate-600 hover:bg-slate-100'
+                    ? 'bg-[#003399] text-white shadow-lg shadow-[#003399]/20 scale-105'
+                    : 'bg-white/80 text-slate-600 hover:bg-white hover:text-[#003399] border border-slate-200'
                 }`}
               >
-                {tab.label} ({tab.count})
+                {tab.label}
               </button>
             ))}
           </div>
@@ -293,85 +314,43 @@ const Progress = () => {
       </section>
 
       {/* Media Gallery */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-white via-slate-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3 lg:gap-4">
             {filteredMedia.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.03 }}
-                  className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-slate-900"
-                  onClick={() => openLightbox(item.src, item.type, idx)}
-                >
-                  {item.type === 'image' ? (
-                    <img
-                      src={item.src}
-                      alt={`Construction progress ${idx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <>
-                      <video
-                        src={item.src}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        muted
-                        playsInline
-                      />
-                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/20 transition-colors">
-                        <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                          <Play className="text-white ml-1" size={24} />
-                        </div>
-                      </div>
-                    </>
-                  )}
-                  
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-2 left-2 right-2">
-                      <div className="flex items-center gap-2 text-white text-xs">
-                        {item.type === 'image' ? (
-                          <ImageIcon size={14} />
-                        ) : (
-                          <Video size={14} />
-                        )}
-                        <span className="font-medium">
-                          {item.type === 'image' ? 'Photo' : 'Video'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
+              <MediaItem
+                key={idx}
+                item={item}
+                idx={idx}
+                onOpenLightbox={openLightbox}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
+      <section className="py-20 md:py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#003399] mb-6">Want to See It In Person?</h2>
-            <p className="text-slate-600 text-lg mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#003399] mb-4 md:mb-6">Want to See It In Person?</h2>
+            <p className="text-slate-600 text-base md:text-lg mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
               Schedule a site visit to see the construction progress firsthand and learn more about available apartments.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="/contact" 
-                className="inline-block bg-[#f59e0b] text-white font-bold px-10 py-4 rounded-full hover:bg-orange-600 transition shadow-lg"
+                className="inline-block bg-[#f59e0b] text-white font-bold px-8 md:px-10 py-3 md:py-4 rounded-full hover:bg-orange-600 transition-all shadow-lg hover:shadow-xl hover:scale-105 duration-300"
               >
                 Schedule a Visit
               </a>
               <a 
                 href="/contact" 
-                className="inline-block bg-[#003399] text-white font-bold px-10 py-4 rounded-full hover:bg-blue-800 transition"
+                className="inline-block bg-[#003399] text-white font-bold px-8 md:px-10 py-3 md:py-4 rounded-full hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl hover:scale-105 duration-300"
               >
                 Buy Your Apartment Now
               </a>
