@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <div className="relative h-20 w-20 flex items-center justify-center overflow-hidden rounded-xl">
+            <div className="relative h-36 w-36 flex items-center justify-center overflow-hidden rounded-xl">
               <img 
                 src={logoImage} 
                 alt="Cliftonville Gardens" 
@@ -115,7 +115,7 @@ const Layout = ({ children }) => {
           >
             <div className="p-6 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <img src={logoImage} alt="Cliftonville" className="h-10 w-10 rounded-lg object-cover" />
+                <img src={logoImage} alt="Cliftonville" className="h-14 w-14 rounded-lg object-cover" />
                 <span className="font-bold text-xl text-slate-800">Cliftonville</span>
               </div>
               <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-slate-100 rounded-full text-slate-600">
@@ -168,7 +168,7 @@ const Layout = ({ children }) => {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-               <img src={logoImage} alt="Cliftonville Gardens" className="h-14 w-14 rounded-xl object-cover" />
+               <img src={logoImage} alt="Cliftonville Gardens" className="h-20 w-20 rounded-xl object-cover" />
                <span className="font-bold text-2xl tracking-tight text-white">Cliftonville Gardens</span>
             </div>
             <p className="leading-relaxed mb-8 max-w-sm">

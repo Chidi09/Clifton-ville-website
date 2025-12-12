@@ -293,13 +293,18 @@ const Contact = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-[#003399] mt-4">Find Us</h2>
           </div>
 
-          {/* MAP PLACEHOLDER */}
-          <div className="rounded-3xl overflow-hidden shadow-2xl h-[400px] md:h-[500px] bg-slate-200 flex items-center justify-center">
-            <div className="text-center p-8">
-              <MapPin className="text-slate-400 mx-auto mb-4" size={48} />
-              <p className="text-slate-500 text-lg font-medium">[MAP PLACEHOLDER]</p>
-              <p className="text-slate-400 text-sm mt-2">Embed Google Maps here showing:<br />Itori, Ewekoro LGA, Ogun State, Nigeria</p>
-            </div>
+          {/* Google Maps Embed */}
+          <div className="rounded-3xl overflow-hidden shadow-2xl h-[400px] md:h-[500px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.2!2d3.2!3d6.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bafa737e3ff75%3A0xe915b8b36bbe8fd9!2sItori%20110106%2C%20Ogun%20State!5e0!3m2!1sen!2sng!4v1639000000000!5m2!1sen!2sng"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Cliftonville Gardens Location - Itori, Ewekoro LGA, Ogun State, Nigeria"
+            ></iframe>
           </div>
         </div>
       </section>

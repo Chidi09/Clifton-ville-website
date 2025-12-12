@@ -41,9 +41,13 @@ const About = () => {
               className="relative order-2 lg:order-1"
             >
               <div className="absolute -inset-4 bg-[#f59e0b]/20 rounded-3xl transform -rotate-3"></div>
-              {/* PLACEHOLDER: Replace with Nursing Staff Group Photo */}
-              <div className="relative rounded-3xl shadow-2xl w-full h-[550px] bg-slate-200 flex items-center justify-center overflow-hidden">
-                <span className="text-slate-400 text-center p-4">[IMAGE: Nursing Staff Group Photo - The professional team caring for residents]</span>
+              {/* Nursing Staff Group Photo - The professional team caring for residents */}
+              <div className="relative rounded-3xl shadow-2xl w-full h-[550px] overflow-hidden">
+                <img 
+                  src={nursingStaffImage} 
+                  alt="Cliftonville Gardens Professional Nursing Staff - Caring team helping residents" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </motion.div>
             
