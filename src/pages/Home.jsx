@@ -18,15 +18,25 @@ const Home = () => {
           Strategy: Clean typography on left, large emotive imagery on right. 
           Stats are separated into a floating bar below.
       */}
-      <section className="relative pt-12 pb-32 lg:pt-24 lg:pb-48 bg-gradient-to-br from-slate-50 to-sky-50">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          
+      <section className="relative pt-12 pb-32 lg:pt-24 lg:pb-48 overflow-hidden">
+        {/* Full-bleed hero background image with sky tint */}
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt=""
+            className="w-full h-full object-cover opacity-25"
+          />
+          <div className="absolute inset-0 bg-sky-700/30 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-50/95 via-sky-50/85 to-sky-100/70" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* Left Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="z-10"
+            className="max-w-3xl"
           >
             <div className="flex items-center gap-2 mb-6">
               <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-600 text-xs font-bold uppercase tracking-wider">
@@ -55,35 +65,6 @@ const Home = () => {
                 Contact Us
               </Link>
             </div>
-          </motion.div>
-
-          {/* Right Image - Modern Shape */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative lg:h-[600px]"
-          >
-             {/* Decorative blob behind */}
-             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-tr from-sky-200 to-orange-100 rounded-full blur-3xl opacity-50 animate-pulse"></div>
-             
-             {/* Main Image - Cliftonville Building */}
-             <img 
-               src={heroImage} 
-               alt="Cliftonville Gardens Facility" 
-               className="relative z-10 w-full h-full object-cover rounded-[2.5rem] shadow-2xl border-4 border-white"
-             />
-
-             {/* Floating Badge */}
-             <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4">
-                <div className="bg-emerald-100 p-3 rounded-full text-emerald-600">
-                  <Shield size={24} />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 font-bold uppercase">Safety Rating</p>
-                  <p className="text-slate-900 font-bold text-lg">100% Secure</p>
-                </div>
-             </div>
           </motion.div>
         </div>
 
