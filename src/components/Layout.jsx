@@ -170,8 +170,8 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      {/* Footer - Updated Info & Brighter Design */}
-      <footer className="bg-slate-700 text-slate-300 py-20 border-t border-slate-600">
+      {/* Footer - Updated Info & Brand Blue Design */}
+      <footer className="bg-[#003399] text-white py-20 border-t border-blue-800">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
@@ -189,7 +189,7 @@ const Layout = ({ children }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center hover:bg-sky-700 hover:text-white transition-colors cursor-pointer"
+                  className="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-colors cursor-pointer"
                 >
                   <social.icon size={18}/>
                 </a>
@@ -202,8 +202,8 @@ const Layout = ({ children }) => {
             <ul className="space-y-4">
               {navLinks.map(link => (
                 <li key={link.name}>
-                  <Link to={link.path} className="hover:text-sky-400 transition-colors flex items-center gap-2 group">
-                    <ChevronRight size={14} className="text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <Link to={link.path} className="text-white hover:text-sky-300 transition-colors flex items-center gap-2 group">
+                    <ChevronRight size={14} className="text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.name}
                   </Link>
                 </li>
@@ -215,21 +215,21 @@ const Layout = ({ children }) => {
             <h4 className="text-white font-bold text-lg mb-6">Visit Us</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin className="text-sky-500 shrink-0" size={18} />
-                <span>Itori, Ewekoro LGA, Abeokuta,<br/>Ogun State, Nigeria</span>
+                <MapPin className="text-sky-400 shrink-0" size={18} />
+                <span className="text-white">Itori, Ewekoro LGA, Abeokuta,<br/>Ogun State, Nigeria</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="text-sky-500 shrink-0" size={18} />
-                <span>+447846324245<br/>+234 8125935055</span>
+                <Phone className="text-sky-400 shrink-0" size={18} />
+                <span className="text-white">+447846324245<br/>+234 8125935055</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="text-sky-500 shrink-0" size={18} />
-                <span className="break-all">info@cliftonvillegardens.com</span>
+                <Mail className="text-sky-400 shrink-0" size={18} />
+                <span className="break-all text-white">info@cliftonvillegardens.com</span>
               </li>
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-sky-500 text-center text-sm text-white/80">
+        <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-blue-800 text-center text-sm text-white/90">
           <p>© {new Date().getFullYear()} Cliftonville Gardens. All rights reserved.</p>
         </div>
       </footer>
