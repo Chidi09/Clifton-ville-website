@@ -47,6 +47,7 @@ const Layout = ({ children }) => {
     { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Facilities', path: '/facilities' },
+    { name: 'Progress', path: '/progress' },
   ];
 
   const socialLinks = [
