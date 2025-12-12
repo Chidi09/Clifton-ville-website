@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <div className="relative h-16 w-16 flex items-center justify-center overflow-hidden rounded-xl">
+            <div className="relative h-20 w-20 flex items-center justify-center overflow-hidden rounded-xl">
               <img 
                 src={logoImage} 
                 alt="Cliftonville Gardens" 
