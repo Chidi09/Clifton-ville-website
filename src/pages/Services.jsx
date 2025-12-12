@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Clock, Pill, Smile, Utensils, Activity, Heart, Stethoscope, Users, CalendarCheck } from 'lucide-react';
+import { CheckCircle, Clock, Pill, Smile, Utensils, Activity, Heart, Stethoscope, Users, CalendarCheck, Scissors, Waves, Sparkles, UserCheck, Brain, Beaker } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -40,6 +40,42 @@ const Services = () => {
       title: "Health & Wellness", 
       desc: "Ongoing health monitoring and wellness programs to ensure physical health matches mental well-being.",
       features: ["Regular check-ups", "Exercise programs", "Mental wellness", "Therapy sessions"]
+    },
+    { 
+      icon: Scissors, 
+      title: "Barbing and Hair Dressing Salon", 
+      desc: "Professional grooming services to help residents look and feel their best with convenient on-site salon facilities.",
+      features: ["Professional stylists", "Hair cutting and styling", "Beard trimming", "Personal grooming"]
+    },
+    { 
+      icon: Waves, 
+      title: "Therapeutic Services", 
+      desc: "Relaxation and therapeutic treatments to promote physical wellness and stress relief.",
+      features: ["Massage therapy", "Hot tub access", "Sauna facilities", "Relaxation treatments"]
+    },
+    { 
+      icon: UserCheck, 
+      title: "Wellbeing Services", 
+      desc: "Comprehensive healthcare team including consultants, specialist nurses, and healthcare assistants dedicated to resident wellbeing.",
+      features: ["Medical consultants", "Specialist nurses", "Geriatric nurses", "General nurses", "Auxiliary nurses", "Healthcare assistants"]
+    },
+    { 
+      icon: Activity, 
+      title: "Occupational Therapy Services", 
+      desc: "Professional occupational therapy to help residents maintain independence and improve daily living skills.",
+      features: ["Daily living support", "Skill development", "Adaptive techniques", "Rehabilitation programs"]
+    },
+    { 
+      icon: Brain, 
+      title: "Mental Health Services", 
+      desc: "Comprehensive mental health support using evidence-based therapeutic approaches including CBT, Psychodynamic, and EMDR to address trauma, addiction, family issues, and more.",
+      features: ["Psychologist services", "Psychiatrist consultations", "Counseling services", "Specialist therapy (Trauma, Addiction, Family, Art)", "CBT, Psychodynamic, EMDR approaches"]
+    },
+    { 
+      icon: Beaker, 
+      title: "Laboratory Services", 
+      desc: "On-site laboratory attached to the clinic providing convenient diagnostic testing and health monitoring services.",
+      features: ["Diagnostic testing", "Health screenings", "Blood work", "Quick results"]
     },
   ];
 
