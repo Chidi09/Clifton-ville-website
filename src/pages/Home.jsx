@@ -246,7 +246,7 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 1.8 }}
             className="text-base sm:text-lg md:text-xl text-white/90 mb-6 md:mb-10 leading-relaxed max-w-xl mx-auto md:mx-0"
           >
-            A premier supported living community designed to provide exceptional care and support for adults aged 18 and above.
+            Where compassionate care meets modern living. Experience a holistic approach to wellness in a nurturing environment designed for adults 18 and above.
           </motion.p>
 
           <motion.div
@@ -321,7 +321,7 @@ const Home = () => {
               transition={{ type: "spring", delay: 0.4 }}
               className="inline-block px-4 py-1 border border-orange-500 rounded-full text-orange-400 text-sm font-bold mb-4 md:mb-6"
             >
-              Welcome to Cliftonville
+              About Cliftonville
             </motion.div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
@@ -329,7 +329,7 @@ const Home = () => {
             </h2>
             
             <p className="text-slate-400 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
-              Welcome to Cliftonville, a premier supported living community designed to provide exceptional care and support for adults aged 18 and above.
+              At Cliftonville, we combine world-class medical expertise with personalized care plans. Our dedicated team works around the clock to ensure dignity, respect, and joy for every resident.
             </p>
             
             <motion.div 
