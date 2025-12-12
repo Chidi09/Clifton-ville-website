@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import navLogo from '../assets/logo(2).jpg';
 import logoImage from '../assets/logo.jpg';
 
 // Social media icons
@@ -72,11 +71,11 @@ const Layout = ({ children }) => {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <div className="relative h-28 w-28 flex items-center justify-center overflow-hidden rounded-xl">
+            <div className="relative h-32 w-32 flex items-center justify-center">
               <img 
-                src={navLogo} 
+                src={logoImage} 
                 alt="Cliftonville Gardens" 
-                className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
+                className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
               />
             </div>
           </Link>
@@ -116,7 +115,7 @@ const Layout = ({ children }) => {
           >
             <div className="p-6 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <img src={navLogo} alt="Cliftonville" className="h-14 w-14 rounded-lg object-cover" />
+                <img src={logoImage} alt="Cliftonville" className="h-16 w-16 object-contain" />
                 <span className="font-bold text-xl text-slate-800">Cliftonville</span>
               </div>
               <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-slate-100 rounded-full text-slate-600">
