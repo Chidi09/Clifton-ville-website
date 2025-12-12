@@ -24,6 +24,12 @@ const LinkedInIcon = ({ size = 18 }) => (
   </svg>
 );
 
+const TikTokIcon = ({ size = 18 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+  </svg>
+);
+
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -47,17 +53,20 @@ const Layout = ({ children }) => {
     { name: 'Instagram', url: 'https://www.instagram.com/cliftonville__', icon: InstagramIcon },
     { name: 'X', url: 'https://x.com/Cliftonville__', icon: XIcon },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/company/cliftonville-home/', icon: LinkedInIcon },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@cliftonville_home', icon: TikTokIcon },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen font-sans text-slate-800 bg-slate-50 selection:bg-sky-600 selection:text-white">
+    <div className="flex flex-col min-h-screen font-sans text-slate-800 bg-stone-50 selection:bg-sky-600 selection:text-white">
+      {/* Floating Posters - Parallax decorative elements */}
+      <FloatingPosters />
       
       {/* Top Bar - Sleek & Dark */}
       <div className="bg-slate-900 text-slate-300 text-xs py-2.5 hidden lg:block tracking-wide">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <span className="opacity-80">A Supported Living Community for Adults (18+)</span>
           <div className="flex gap-8">
-            <a href="tel:+2349111111102" className="flex items-center gap-2 hover:text-white transition-colors"><Phone size={13}/> +234 911 1111 102</a>
+            <a href="tel:+447846324245" className="flex items-center gap-2 hover:text-white transition-colors"><Phone size={13}/> +447846324245</a>
             <a href="mailto:info@cliftonvillegardens.com" className="flex items-center gap-2 hover:text-white transition-colors"><Mail size={13}/> info@cliftonvillegardens.com</a>
           </div>
         </div>
@@ -214,7 +223,7 @@ const Layout = ({ children }) => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-sky-500 shrink-0" size={18} />
-                <span>+447 846325256<br/>+234 8125935055</span>
+                <span>+447846324245<br/>+234 8125935055</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-sky-500 shrink-0" size={18} />
@@ -223,7 +232,7 @@ const Layout = ({ children }) => {
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-800 text-center text-sm text-slate-600">
+        <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-600 text-center text-sm text-slate-400">
           <p>© {new Date().getFullYear()} Cliftonville Gardens. All rights reserved.</p>
         </div>
       </footer>

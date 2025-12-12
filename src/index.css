@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  background-color: #f8fafc;
+  background-color: #fafaf9;
   color: var(--color-clifton-dark);
 }
 
@@ -51,4 +51,209 @@ body {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+/* ============================================
+   EXTREME ANIMATION KEYFRAMES
+   ============================================ */
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  50% { 
+    transform: translateY(-20px) rotate(-1deg); 
+  }
+  75% {
+    transform: translateY(-10px) rotate(0.5deg);
+  }
+}
+
+/* Glow pulse for buttons and highlights */
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(2,132,199,0.4), 0 0 40px rgba(2,132,199,0.1); 
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(2,132,199,0.8), 0 0 80px rgba(2,132,199,0.3); 
+  }
+}
+
+/* Ken Burns zoom effect for hero images */
+@keyframes ken-burns {
+  0% { 
+    transform: scale(1) translate(0, 0); 
+  }
+  100% { 
+    transform: scale(1.15) translate(-2%, -1%); 
+  }
+}
+
+/* Ken Burns reverse */
+@keyframes ken-burns-reverse {
+  0% { 
+    transform: scale(1.15) translate(-2%, -1%); 
+  }
+  100% { 
+    transform: scale(1) translate(0, 0); 
+  }
+}
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Slide up with fade */
+@keyframes slide-up-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in with bounce */
+@keyframes scale-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Particle float upward */
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) scale(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) scale(1);
+  }
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Rotate slow */
+@keyframes rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Bounce arrow */
+@keyframes bounce-arrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Text reveal */
+@keyframes text-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Utility classes for animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s ease-out forwards;
+}
+
+.animate-ken-burns-reverse {
+  animation: ken-burns-reverse 20s ease-out forwards;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up-fade 0.8s ease-out forwards;
+}
+
+.animate-scale-bounce {
+  animation: scale-bounce 0.6s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-bounce-arrow {
+  animation: bounce-arrow 1.5s ease-in-out infinite;
+}
+
+/* 3D perspective for tilt effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* GPU acceleration */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
