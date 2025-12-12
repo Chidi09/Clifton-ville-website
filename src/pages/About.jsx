@@ -1,0 +1,216 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Heart, Target, Eye, Users, Award, Clock } from 'lucide-react';
+
+const About = () => {
+  return (
+    <div>
+      {/* Page Header */}
+      <section className="bg-gradient-to-br from-[#003399] to-blue-900 py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-block py-2 px-4 mb-6 rounded-full bg-white/10 text-white font-bold text-sm uppercase tracking-wider">
+              About Cliftonville
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Who We Are</h1>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+              We nurture responsibly. Discover the heart behind Cliftonville and our commitment to exceptional care.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mission & Vision Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* IMAGE PLACEHOLDER */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative order-2 lg:order-1"
+            >
+              <div className="absolute -inset-4 bg-[#f59e0b]/20 rounded-3xl transform -rotate-3"></div>
+              {/* PLACEHOLDER: Replace with Nursing Staff Group Photo */}
+              <div className="relative rounded-3xl shadow-2xl w-full h-[550px] bg-slate-200 flex items-center justify-center overflow-hidden">
+                <span className="text-slate-400 text-center p-4">[IMAGE: Nursing Staff Group Photo - The professional team caring for residents]</span>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
+              <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">Our Story</span>
+              <h2 className="text-4xl font-bold text-[#003399] mt-4 mb-6">A Safe and Nurturing Community</h2>
+              <p className="text-slate-600 text-lg leading-relaxed mb-6">
+                Welcome to Cliftonville, a premier supported living community designed to provide exceptional care and support for adults aged 18 and above.
+              </p>
+              <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                Cliftonville is more than just a supported living community; it's a place where residents can thrive and create lasting memories. Our dedicated team works around the clock to ensure dignity, respect, and joy for every resident.
+              </p>
+              
+              {/* Mission Card */}
+              <div className="bg-[#003399] p-8 rounded-2xl text-white mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Target className="text-[#f59e0b]" size={28} />
+                  <h3 className="text-xl font-bold">Our Mission</h3>
+                </div>
+                <p className="text-blue-100 italic text-lg leading-relaxed">
+                  "To create a safe, nurturing environment where residents can thrive and lead fulfilling lives."
+                </p>
+              </div>
+
+              {/* Vision Card */}
+              <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <Eye className="text-[#003399]" size={28} />
+                  <h3 className="text-xl font-bold text-slate-800">Our Vision</h3>
+                </div>
+                <p className="text-slate-600 leading-relaxed">
+                  To be the leading supported living community in Nigeria, setting the standard for compassionate care, modern facilities, and holistic wellness.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">What Drives Us</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#003399] mt-4">Our Values</h2>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: Heart, title: "Compassion", desc: "We treat every resident with kindness, empathy, and understanding." },
+              { icon: Users, title: "Community", desc: "Building meaningful connections and a sense of belonging." },
+              { icon: Award, title: "Excellence", desc: "Striving for the highest standards in everything we do." },
+              { icon: Clock, title: "Dedication", desc: "24/7 commitment to the well-being of our residents." },
+            ].map((value, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-center"
+              >
+                <div className="w-16 h-16 bg-[#003399]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <value.icon className="text-[#003399]" size={32} />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-3">{value.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{value.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">Our People</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#003399] mt-4">Meet Our Team</h2>
+            <p className="text-slate-600 text-lg mt-4 max-w-2xl mx-auto">
+              Dedicated professionals committed to providing exceptional care and support.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              { name: "Team Member", role: "Medical Director", placeholder: "[PHOTO: Medical Director]" },
+              { name: "Team Member", role: "Head of Care", placeholder: "[PHOTO: Head of Care]" },
+              { name: "Team Member", role: "Facilities Manager", placeholder: "[PHOTO: Facilities Manager]" },
+            ].map((member, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="text-center group"
+              >
+                {/* PLACEHOLDER: Replace with actual team member photo */}
+                <div className="w-48 h-48 mx-auto rounded-full bg-slate-200 flex items-center justify-center mb-6 overflow-hidden group-hover:shadow-xl transition-shadow">
+                  <span className="text-slate-400 text-xs text-center p-4">{member.placeholder}</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-800">{member.name}</h3>
+                <p className="text-[#f59e0b] font-medium">{member.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Location Section */}
+      <section className="py-24 bg-[#003399] text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">Our Location</span>
+              <h2 className="text-4xl font-bold mt-4 mb-6">Where to Find Us</h2>
+              <p className="text-blue-100 text-lg leading-relaxed mb-8">
+                Cliftonville is nestled in the serene environment of Itori, Ewekoro LGA, Ogun State, Nigeria. Our location offers the perfect balance of peaceful surroundings and accessibility.
+              </p>
+              <div className="bg-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                <h3 className="font-bold text-xl mb-2">Address</h3>
+                <p className="text-blue-100">Itori, Ewekoro LGA, Abeokuta, Ogun State, Nigeria</p>
+              </div>
+            </motion.div>
+
+            {/* MAP PLACEHOLDER */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden shadow-2xl h-[400px] bg-slate-300 flex items-center justify-center"
+            >
+              <span className="text-slate-500 text-center p-4">[MAP PLACEHOLDER: Embed Google Maps here showing Itori, Ewekoro LGA location]</span>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#003399] mb-6">Ready to Visit Cliftonville?</h2>
+          <p className="text-slate-600 text-lg mb-8">
+            We'd love to show you around and answer any questions you may have about our community.
+          </p>
+          <Link to="/contact" className="inline-block bg-[#f59e0b] text-white font-bold px-10 py-4 rounded-full hover:bg-orange-600 transition shadow-lg">
+            Schedule a Visit
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default About;
