@@ -73,9 +73,9 @@ const Services = () => {
     },
     { 
       icon: Beaker, 
-      title: "Laboratory Services", 
-      desc: "On-site laboratory attached to the clinic providing convenient diagnostic testing and health monitoring services.",
-      features: ["Diagnostic testing", "Health screenings", "Blood work", "Quick results"]
+      title: "On-site Clinic/Laboratory Services", 
+      desc: "On-site clinic and laboratory providing convenient diagnostic testing and health monitoring services.",
+      features: ["Medical consultations", "Diagnostic testing", "Health screenings", "Blood work", "Quick results"]
     },
   ];
 
