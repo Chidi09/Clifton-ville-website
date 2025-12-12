@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Heart, Sun, ArrowRight, ArrowDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Shield, Heart, Sun, ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Building2, Clock } from 'lucide-react';
 
 // Hero image
 import heroImage from '../assets/heroimage.jpg';
@@ -229,14 +229,13 @@ const Home = () => {
             className="perspective-1000"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[1.1] mb-4 md:mb-6">
-              <motion.span variants={wordVariants} className="inline-block mr-2 md:mr-4">Care</motion.span>
-              <motion.span variants={wordVariants} className="inline-block mr-2 md:mr-4">Facility</motion.span>
+              <motion.span variants={wordVariants} className="inline-block mr-2 md:mr-4">Welcome to</motion.span>
               <br className="hidden sm:block" />
               <motion.span 
                 variants={wordVariants} 
                 className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-300"
               >
-                <TypewriterText text="With a Difference." delay={1200} />
+                <TypewriterText text="Cliftonville Gardens" delay={800} />
               </motion.span>
             </h1>
           </motion.div>
@@ -247,8 +246,7 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 1.8 }}
             className="text-base sm:text-lg md:text-xl text-white/90 mb-6 md:mb-10 leading-relaxed max-w-xl mx-auto md:mx-0"
           >
-            A holistic wellness community for adults (18+) in need of personal care. 
-            We combine world-class medical expertise with the warmth of home.
+            A premier supported living community designed to provide exceptional care and support for adults aged 18 and above.
           </motion.p>
 
           <motion.div
@@ -354,6 +352,41 @@ const Home = () => {
               Learn more about us 
               <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ============================================
+          STATS BAR
+          ============================================ */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl md:rounded-3xl p-6 md:p-10 grid grid-cols-3 gap-4 md:gap-8 text-center"
+          >
+            {[
+              { label: "Total Units", value: "67+", icon: Building2, color: "text-blue-400" },
+              { label: "Care Support", value: "24/7", icon: Heart, color: "text-yellow-400" },
+              { label: "Amenities", value: "13+", icon: Clock, color: "text-slate-300" },
+            ].map((stat, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, type: "spring" }}
+                className="text-white"
+              >
+                <div className={`${stat.color} mb-2 flex justify-center`}>
+                  <stat.icon size={32} className="md:w-10 md:h-10" />
+                </div>
+                <h3 className="text-2xl md:text-4xl font-extrabold">{stat.value}</h3>
+                <p className="text-slate-400 font-medium text-xs md:text-sm uppercase tracking-wide mt-1">{stat.label}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -537,39 +570,6 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ============================================
-          STATS BAR
-          ============================================ */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 md:px-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl md:rounded-3xl p-6 md:p-10 grid grid-cols-3 gap-4 md:gap-8 text-center"
-          >
-            {[
-              { label: "Total Units", value: "67+", icon: "🏠" },
-              { label: "Care Support", value: "24/7", icon: "❤️" },
-              { label: "Amenities", value: "13+", icon: "⛳" },
-            ].map((stat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, type: "spring" }}
-                className="text-white"
-              >
-                <span className="text-2xl md:text-3xl mb-2 block">{stat.icon}</span>
-                <h3 className="text-2xl md:text-4xl font-extrabold">{stat.value}</h3>
-                <p className="text-slate-400 font-medium text-xs md:text-sm uppercase tracking-wide mt-1">{stat.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </section>
 

@@ -93,7 +93,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-[#003399]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <motion.div
@@ -101,8 +101,8 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">What Drives Us</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#003399] mt-4">Our Values</h2>
+              <span className="text-yellow-400 font-bold uppercase tracking-widest text-sm">What Drives Us</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mt-4">Our Values</h2>
             </motion.div>
           </div>
 
@@ -119,13 +119,13 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-center"
+                className="bg-blue-900/50 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-center border border-blue-800/50"
               >
-                <div className="w-16 h-16 bg-[#003399]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="text-[#003399]" size={32} />
+                <div className="w-16 h-16 bg-yellow-400/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <value.icon className="text-yellow-400" size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-3">{value.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{value.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                <p className="text-white/90 leading-relaxed">{value.desc}</p>
               </motion.div>
             ))}
           </div>

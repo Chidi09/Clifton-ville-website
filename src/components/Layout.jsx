@@ -189,7 +189,7 @@ const Layout = ({ children }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-10 h-10 rounded-full bg-slate-600 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors cursor-pointer"
+                  className="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center hover:bg-sky-700 hover:text-white transition-colors cursor-pointer"
                 >
                   <social.icon size={18}/>
                 </a>
@@ -229,7 +229,7 @@ const Layout = ({ children }) => {
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-600 text-center text-sm text-slate-400">
+        <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-sky-500 text-center text-sm text-white/80">
           <p>© {new Date().getFullYear()} Cliftonville Gardens. All rights reserved.</p>
         </div>
       </footer>
