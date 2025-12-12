@@ -18,7 +18,7 @@ const Home = () => {
           Strategy: Clean typography on left, large emotive imagery on right. 
           Stats are separated into a floating bar below.
       */}
-      <section className="relative pt-12 pb-32 lg:pt-24 lg:pb-48 overflow-hidden">
+      <section className="relative pt-12 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
         {/* Full-bleed hero background image with sky tint */}
         <div className="absolute inset-0">
           <img
@@ -68,10 +68,8 @@ const Home = () => {
           </motion.div>
         </div>
 
-        {/* --- FLOATING STATS BAR --- 
-            Positioned overlapping the hero and next section for depth.
-        */}
-        <div className="max-w-6xl mx-auto px-6 mt-16 lg:mt-0 lg:absolute lg:bottom-12 lg:left-1/2 lg:-translate-x-1/2 w-full z-20">
+        {/* --- STATS BAR --- */}
+        <div className="max-w-6xl mx-auto px-6 mt-14 w-full">
           <div className="bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] rounded-3xl p-8 lg:p-10 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
             {[
               { label: "Total Units", value: "67+", icon: "🏠" },
