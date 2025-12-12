@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import CliftonvilleLogoIcon from './CliftonvilleLogoIcon';
 import logoImage from '../assets/logo.jpg';
 
 // Social media icons
@@ -71,17 +70,13 @@ const Layout = ({ children }) => {
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-12 flex items-center justify-center overflow-hidden rounded-xl">
+          <Link to="/" className="flex items-center group">
+            <div className="relative h-16 w-16 flex items-center justify-center overflow-hidden rounded-xl">
               <img 
                 src={logoImage} 
-                alt="Cliftonville Logo" 
+                alt="Cliftonville Gardens" 
                 className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-2xl text-slate-800 tracking-tight leading-none">Cliftonville</span>
-              <span className="text-[0.6rem] font-bold text-sky-600 uppercase tracking-[0.2em]">Gardens</span>
             </div>
           </Link>
           
@@ -172,9 +167,9 @@ const Layout = ({ children }) => {
       <footer className="bg-slate-900 text-slate-400 py-20 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-6 text-white">
-               <CliftonvilleLogoIcon className="h-10 w-10" />
-               <span className="font-bold text-2xl tracking-tight">Cliftonville Gardens</span>
+            <div className="flex items-center gap-3 mb-6">
+               <img src={logoImage} alt="Cliftonville Gardens" className="h-14 w-14 rounded-xl object-cover" />
+               <span className="font-bold text-2xl tracking-tight text-white">Cliftonville Gardens</span>
             </div>
             <p className="leading-relaxed mb-8 max-w-sm">
               A safe, nurturing environment where residents can thrive and lead fulfilling lives. Located in the heart of Ogun State.

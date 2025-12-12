@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Heart, Target, Eye, Users, Award, Clock } from 'lucide-react';
+import nursingStaffImage from '../assets/lady helping a woman on crutches.jpg';
 
 const About = () => {
   return (
@@ -127,43 +128,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">Our People</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#003399] mt-4">Meet Our Team</h2>
-            <p className="text-slate-600 text-lg mt-4 max-w-2xl mx-auto">
-              Dedicated professionals committed to providing exceptional care and support.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {[
-              { name: "Team Member", role: "Medical Director", placeholder: "[PHOTO: Medical Director]" },
-              { name: "Team Member", role: "Head of Care", placeholder: "[PHOTO: Head of Care]" },
-              { name: "Team Member", role: "Facilities Manager", placeholder: "[PHOTO: Facilities Manager]" },
-            ].map((member, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="text-center group"
-              >
-                {/* PLACEHOLDER: Replace with actual team member photo */}
-                <div className="w-48 h-48 mx-auto rounded-full bg-slate-200 flex items-center justify-center mb-6 overflow-hidden group-hover:shadow-xl transition-shadow">
-                  <span className="text-slate-400 text-xs text-center p-4">{member.placeholder}</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-800">{member.name}</h3>
-                <p className="text-[#f59e0b] font-medium">{member.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Location Section */}
       <section className="py-24 bg-[#003399] text-white">
         <div className="max-w-7xl mx-auto px-6">
@@ -184,14 +148,23 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* MAP PLACEHOLDER */}
+            {/* Google Maps Embed */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl overflow-hidden shadow-2xl h-[400px] bg-slate-300 flex items-center justify-center"
+              className="rounded-2xl overflow-hidden shadow-2xl h-[400px]"
             >
-              <span className="text-slate-500 text-center p-4">[MAP PLACEHOLDER: Embed Google Maps here showing Itori, Ewekoro LGA location]</span>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31696.071567361!2d3.2!3d6.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bafa737e3ff75%3A0xe915b8b36bbe8fd9!2sItori%20110106%2C%20Ogun%20State!5e0!3m2!1sen!2sng!4v1"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Cliftonville Gardens Location"
+              ></iframe>
             </motion.div>
           </div>
         </div>
