@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import navLogo from '../assets/logo(2).jpg';
 import logoImage from '../assets/logo.jpg';
 
 // Social media icons
@@ -65,15 +66,15 @@ const Layout = ({ children }) => {
       {/* Main Navigation - Glassmorphism */}
       <nav 
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-white py-5'
+          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-2' : 'bg-white py-3'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <div className="relative h-36 w-36 flex items-center justify-center overflow-hidden rounded-xl">
+            <div className="relative h-28 w-28 flex items-center justify-center overflow-hidden rounded-xl">
               <img 
-                src={logoImage} 
+                src={navLogo} 
                 alt="Cliftonville Gardens" 
                 className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
@@ -115,7 +116,7 @@ const Layout = ({ children }) => {
           >
             <div className="p-6 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <img src={logoImage} alt="Cliftonville" className="h-14 w-14 rounded-lg object-cover" />
+                <img src={navLogo} alt="Cliftonville" className="h-14 w-14 rounded-lg object-cover" />
                 <span className="font-bold text-xl text-slate-800">Cliftonville</span>
               </div>
               <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-slate-100 rounded-full text-slate-600">
