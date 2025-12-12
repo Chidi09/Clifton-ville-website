@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoImage from '../assets/logo.jpg';
+import navLogo from '../assets/logo-trimmed.png';
 
 // Social media icons
 const InstagramIcon = ({ size = 18 }) => (
@@ -65,17 +66,17 @@ const Layout = ({ children }) => {
       {/* Main Navigation - Glassmorphism */}
       <nav 
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-2' : 'bg-white py-3'
+          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-1.5' : 'bg-white py-2'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <div className="relative h-32 w-32 flex items-center justify-center">
+            <div className="relative h-24 w-64 flex items-center">
               <img 
-                src={logoImage} 
+                src={navLogo} 
                 alt="Cliftonville Gardens" 
-                className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-full w-full object-contain object-left group-hover:scale-[1.02] transition-transform duration-300"
               />
             </div>
           </Link>
@@ -115,7 +116,7 @@ const Layout = ({ children }) => {
           >
             <div className="p-6 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <img src={logoImage} alt="Cliftonville" className="h-16 w-16 object-contain" />
+                <img src={navLogo} alt="Cliftonville" className="h-20 w-20 object-contain" />
                 <span className="font-bold text-xl text-slate-800">Cliftonville</span>
               </div>
               <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-slate-100 rounded-full text-slate-600">

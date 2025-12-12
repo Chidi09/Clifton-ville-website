@@ -24,10 +24,10 @@ const Home = () => {
           <img
             src={heroImage}
             alt=""
-            className="w-full h-full object-cover opacity-25"
+            className="w-full h-full object-cover opacity-45"
           />
-          <div className="absolute inset-0 bg-sky-700/30 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-50/95 via-sky-50/85 to-sky-100/70" />
+          <div className="absolute inset-0 bg-sky-600/15 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/75 via-sky-50/55 to-sky-100/35" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
