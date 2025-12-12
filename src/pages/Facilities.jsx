@@ -71,7 +71,7 @@ const Facilities = () => {
     { src: greeneryImage, alt: "Gardens" },
     { src: buildingImage3, alt: "Residential Block", large: true },
     { src: restaurantImage, alt: "Restaurant" },
-    { src: buildingImage4, alt: "Estate View" },
+    { src: buildingImage4, alt: "Community View" },
   ];
 
   return (
@@ -110,9 +110,9 @@ const Facilities = () => {
               viewport={{ once: true }}
             >
               <span className="text-orange-500 font-bold uppercase tracking-widest text-sm">Accommodation</span>
-              <h2 className="text-4xl font-bold text-slate-900 mt-4 mb-6">The Estate</h2>
+              <h2 className="text-4xl font-bold text-slate-900 mt-4 mb-6">The Community</h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-8">
-                Our beautifully designed estate features 67 residential units spread across 3 modern apartment blocks. Each unit is thoughtfully designed to provide comfort, independence, and accessibility.
+                Our beautifully designed community features 67 residential units spread across 3 modern apartment blocks. Each unit is thoughtfully designed to provide comfort, independence, and accessibility.
               </p>
               
               <div className="grid grid-cols-2 gap-4 mb-8">
@@ -150,7 +150,7 @@ const Facilities = () => {
               />
               <img 
                 src={buildingImage3} 
-                alt="Estate" 
+                alt="Community" 
                 className="rounded-2xl shadow-lg w-full h-40 object-cover"
               />
             </motion.div>
@@ -247,7 +247,7 @@ const Facilities = () => {
               className="p-6"
             >
               <div className="text-5xl md:text-6xl font-bold text-orange-400 mb-2">1</div>
-              <div className="uppercase tracking-widest text-sm">On-site Clinic</div>
+              <div className="uppercase tracking-widest text-sm">On-site Clinic/Laboratory Services</div>
             </motion.div>
           </div>
         </div>
