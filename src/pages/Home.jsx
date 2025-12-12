@@ -402,11 +402,25 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-10 md:mb-16"
           >
-            <span className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-2 block">Coming Soon</span>
+            <span className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-2 block">In Progress</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900">Something Big Is Coming</h2>
             <p className="text-slate-600 mt-3 md:mt-4 max-w-2xl mx-auto text-sm md:text-base">
-              A facility that will transform care giving in Itori, Ewekoro LGA, Ogun State.
+              A facility that will transform care giving in Itori, Ewekoro LGA, Ogun State. Work has already begun on the site.
             </p>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="mt-6 md:mt-8"
+            >
+              <Link 
+                to="/contact" 
+                className="inline-block px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-[#003399] to-blue-700 text-white rounded-full font-bold text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                Buy Your Apartment Now
+              </Link>
+            </motion.div>
           </motion.div>
 
           {/* Flyers carousel (hero-style crossfade + Ken Burns) */}
