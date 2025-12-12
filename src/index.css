@@ -1,13 +1,20 @@
 @import "tailwindcss";
 
-/* Cliftonville Brand Colors and Custom Theme */
+/* Cliftonville Gardens - Premium Sky Blue Theme */
 @theme {
-  --color-clifton-blue: #003399;
-  --color-clifton-light-blue: #3b82f6;
-  --color-clifton-orange: #f59e0b;
-  --color-clifton-bg: #f8fafc;
-  
-  --font-family-sans: 'Inter', system-ui, sans-serif;
+  /* Sky Blue Palette - Health, Wellness & Nurturing */
+  --color-clifton-sky: #0284c7;        /* Rich, professional Sky Blue (Sky-600) */
+  --color-clifton-light-sky: #e0f2fe;  /* Very light blue for backgrounds */
+  --color-clifton-dark: #0f172a;       /* Deep slate for text (softer than black) */
+  --color-clifton-orange: #f97316;     /* Vibrant Orange accent */
+  --color-clifton-surface: #ffffff;
+
+  /* Premium Typography */
+  --font-family-sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+
+  /* Custom Shadows for Depth */
+  --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+  --shadow-glow: 0 0 20px rgba(2, 132, 199, 0.3);
 }
 
 html {
@@ -15,6 +22,33 @@ html {
 }
 
 body {
-  background-color: var(--color-clifton-bg);
-  color: #1e293b;
+  background-color: #f8fafc;
+  color: var(--color-clifton-dark);
+}
+
+/* Selection highlight */
+::selection {
+  background-color: var(--color-clifton-sky);
+  color: white;
+}
+
+/* Smooth animations */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom utility classes */
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }

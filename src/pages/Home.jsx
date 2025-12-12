@@ -1,181 +1,155 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Heart, Sun, ArrowRight, Users, Building2, Award } from 'lucide-react';
+import { Shield, Heart, Sun, ArrowRight } from 'lucide-react';
+
+// Import actual images
+import heroImage from '../assets/heroimage.jpg';
+import nursesImage from '../assets/unnamed (2).jpg';
+import buildingImage from '../assets/IMG-20251017-WA0008.jpg';
+import staffImage from '../assets/lady on blue nurse clothe.jpg';
+import poolImage from '../assets/Pool.jpg';
 
 const Home = () => {
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center bg-slate-900 overflow-hidden">
-        {/* IMAGE PLACEHOLDER: Replace with Main Building Render */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#003399]/95 via-[#003399]/70 to-black/50 z-10" />
-          {/* PLACEHOLDER: Replace this div with your actual hero image */}
-          <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
-            <span className="text-slate-600 text-lg">[HERO IMAGE: Cliftonville Building Exterior]</span>
-          </div>
-        </div>
-
-        <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
+    <div className="overflow-x-hidden">
+      
+      {/* --- HERO SECTION --- 
+          Strategy: Clean typography on left, large emotive imagery on right. 
+          Stats are separated into a floating bar below.
+      */}
+      <section className="relative pt-12 pb-32 lg:pt-24 lg:pb-48 bg-gradient-to-br from-slate-50 to-sky-50">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Content */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="z-10"
           >
-            <span className="inline-block py-2 px-4 mb-6 rounded-full bg-[#f59e0b]/20 border border-[#f59e0b] text-[#f59e0b] font-bold text-sm uppercase tracking-wider backdrop-blur-sm">
-              Welcome to Cliftonville
-            </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
-              Care Facility <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">
-                with a Difference.
+            <div className="flex items-center gap-2 mb-6">
+              <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-600 text-xs font-bold uppercase tracking-wider">
+                Supported Living
+              </span>
+              <span className="w-12 h-[1px] bg-sky-200"></span>
+            </div>
+
+            <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6">
+              Care Facility <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-600">
+                With a Difference.
               </span>
             </h1>
-            <p className="text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl">
+            
+            <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg">
               A holistic wellness community for adults (18+) in need of personal care. 
-              We combine medical expertise with the warmth of home.
+              We combine world-class medical expertise with the warmth of home.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/about" className="px-8 py-4 bg-[#f59e0b] text-white rounded-full font-bold shadow-lg hover:bg-orange-600 transition flex items-center justify-center gap-2">
-                Discover More <ArrowRight size={20} />
+              <Link to="/about" className="px-8 py-4 bg-sky-600 text-white rounded-full font-bold shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:bg-sky-500 hover:scale-105 transition-all flex items-center justify-center gap-2">
+                Discover More <ArrowRight size={18} />
               </Link>
-              <Link to="/contact" className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-[#003399] transition">
+              <Link to="/contact" className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-bold hover:bg-slate-50 hover:border-sky-400 hover:text-sky-600 transition-all">
                 Contact Us
               </Link>
             </div>
           </motion.div>
-        </div>
 
-        {/* Floating Stats */}
-        <div className="absolute bottom-0 left-0 right-0 z-20">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="bg-white rounded-t-3xl shadow-2xl p-8 grid grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-[#003399]">67+</div>
-                <div className="text-gray-500 text-sm mt-1">Total Units</div>
-              </div>
-              <div className="text-center border-x border-gray-200">
-                <div className="text-3xl md:text-4xl font-bold text-[#003399]">24/7</div>
-                <div className="text-gray-500 text-sm mt-1">Care Support</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-[#003399]">13+</div>
-                <div className="text-gray-500 text-sm mt-1">Amenities</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          {/* Right Image - Modern Shape */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative lg:h-[600px]"
+          >
+             {/* Decorative blob behind */}
+             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-tr from-sky-200 to-orange-100 rounded-full blur-3xl opacity-50 animate-pulse"></div>
+             
+             {/* Main Image - Cliftonville Building */}
+             <img 
+               src={heroImage} 
+               alt="Cliftonville Gardens Facility" 
+               className="relative z-10 w-full h-full object-cover rounded-[2.5rem] shadow-2xl border-4 border-white"
+             />
 
-      {/* Core Values Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">Our Foundation</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#003399] mt-4">Our Core Values</h2>
-            </motion.div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {[
-              { icon: Sun, title: "Serenity", desc: "A peaceful and tranquil environment for residents to relax and find inner peace.", color: "text-blue-500", bg: "bg-blue-50", border: "border-blue-200" },
-              { icon: Heart, title: "Support", desc: "Comprehensive assistance and emotional care to help residents thrive.", color: "text-[#f59e0b]", bg: "bg-orange-50", border: "border-orange-200" },
-              { icon: Shield, title: "Safety", desc: "The well-being and security of all residents is a priority.", color: "text-green-600", bg: "bg-green-50", border: "border-green-200" },
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`group p-10 rounded-3xl border ${item.border} hover:shadow-2xl transition-all duration-300 bg-white hover:-translate-y-2`}
-              >
-                <div className={`w-20 h-20 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
-                  <item.icon size={40} />
+             {/* Floating Badge */}
+             <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4">
+                <div className="bg-emerald-100 p-3 rounded-full text-emerald-600">
+                  <Shield size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-4">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed text-lg">{item.desc}</p>
-              </motion.div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase">Safety Rating</p>
+                  <p className="text-slate-900 font-bold text-lg">100% Secure</p>
+                </div>
+             </div>
+          </motion.div>
+        </div>
+
+        {/* --- FLOATING STATS BAR --- 
+            Positioned overlapping the hero and next section for depth.
+        */}
+        <div className="max-w-6xl mx-auto px-6 mt-16 lg:mt-0 lg:absolute lg:bottom-12 lg:left-1/2 lg:-translate-x-1/2 w-full z-20">
+          <div className="bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] rounded-3xl p-8 lg:p-10 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            {[
+              { label: "Total Units", value: "67+", icon: "🏠" },
+              { label: "Care Support", value: "24/7", icon: "❤️" },
+              { label: "Premium Amenities", value: "13+", icon: "⛳" },
+            ].map((stat, i) => (
+              <div key={i} className="flex items-center justify-center gap-4 pt-4 md:pt-0">
+                <span className="text-3xl filter grayscale hover:grayscale-0 transition">{stat.icon}</span>
+                <div>
+                  <h3 className="text-3xl font-extrabold text-slate-800">{stat.value}</h3>
+                  <p className="text-slate-500 font-medium text-sm uppercase tracking-wide">{stat.label}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Preview Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* IMAGE PLACEHOLDER */}
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute -inset-4 bg-[#003399]/10 rounded-3xl transform -rotate-3"></div>
-              {/* PLACEHOLDER: Replace with actual facility image */}
-              <div className="relative rounded-3xl shadow-2xl w-full h-[500px] bg-slate-200 flex items-center justify-center overflow-hidden">
-                <span className="text-slate-400 text-center p-4">[IMAGE: Nursing Staff Group Photo or Facility Interior]</span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">About Cliftonville</span>
-              <h2 className="text-4xl font-bold text-[#003399] mt-4 mb-6">We Nurture Responsibly</h2>
-              <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                Welcome to Cliftonville, a premier supported living community designed to provide exceptional care and support for adults aged 18 and above.
-              </p>
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-[#f59e0b] shadow-sm mb-8">
-                <p className="text-slate-700 italic text-lg">
-                  "To create a safe, nurturing environment where residents can thrive and lead fulfilling lives."
-                </p>
-                <p className="text-[#003399] font-bold mt-2">— Our Mission</p>
-              </div>
-              <Link to="/about" className="inline-flex items-center gap-2 text-[#003399] font-bold text-lg hover:text-[#f59e0b] transition-colors">
-                Learn More About Us <ArrowRight size={20} />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-24 bg-white">
+      {/* --- CORE VALUES --- */}
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm">What We Offer</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#003399] mt-4">World-Class Facilities</h2>
+            <h4 className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-2">Our Foundation</h4>
+            <h2 className="text-4xl font-bold text-slate-900">Why Choose Cliftonville?</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Building2, title: "Modern Accommodation", desc: "67 beautifully designed residential units across 3 apartment blocks." },
-              { icon: Users, title: "Professional Staff", desc: "Trained caregivers providing 24/7 compassionate support." },
-              { icon: Award, title: "Premium Amenities", desc: "Golf course, gym, spa, pool, and restaurant on-site." },
+              { 
+                title: "Serenity", 
+                desc: "A peaceful and tranquil environment for residents to relax and find inner peace.",
+                icon: Sun,
+                color: "text-sky-500",
+                bg: "bg-sky-50"
+              },
+              { 
+                title: "Support", 
+                desc: "Comprehensive assistance and emotional care to help residents thrive.",
+                icon: Heart,
+                color: "text-rose-500",
+                bg: "bg-rose-50"
+              },
+              { 
+                title: "Safety", 
+                desc: "The well-being and security of all residents is a priority.",
+                icon: Shield,
+                color: "text-emerald-500",
+                bg: "bg-emerald-50"
+              }
             ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-slate-50 p-8 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"
+              <motion.div 
+                whileHover={{ y: -10 }}
+                key={idx} 
+                className="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-300"
               >
-                <div className="w-14 h-14 bg-[#003399] rounded-xl flex items-center justify-center text-white mb-6">
-                  <item.icon size={28} />
+                <div className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mb-6`}>
+                  <item.icon size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-3">{item.title}</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mb-3">{item.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
@@ -183,33 +157,98 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-[#003399] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#f59e0b] rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 text-center text-white relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Learn More?</h2>
-            <p className="text-blue-200 mb-10 text-xl max-w-2xl mx-auto">
-              Our team is ready to answer any questions and help you explore how Cliftonville can support you or your loved ones.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="inline-block bg-[#f59e0b] text-white font-bold px-10 py-4 rounded-full hover:bg-orange-600 transition shadow-lg">
-                Get in Touch
-              </Link>
-              <Link to="/facilities" className="inline-block bg-white text-[#003399] font-bold px-10 py-4 rounded-full hover:bg-gray-100 transition">
-                View Facilities
-              </Link>
+      {/* --- ABOUT PREVIEW (Asymmetrical Layout) --- */}
+      <section className="py-24 bg-slate-900 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative">
+             <div className="absolute -inset-4 bg-sky-600/20 rounded-3xl rotate-6"></div>
+             {/* Nursing Staff Image */}
+             <img 
+               src={nursesImage} 
+               alt="Cliftonville Nursing Staff" 
+               className="relative rounded-3xl shadow-2xl w-full object-cover h-[500px] grayscale hover:grayscale-0 transition duration-700"
+             />
+          </div>
+          
+          <div>
+            <div className="inline-block px-4 py-1 border border-orange-500 rounded-full text-orange-400 text-sm font-bold mb-6">
+              About Cliftonville
             </div>
-          </motion.div>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              We Nurture <span className="text-sky-400">Responsibly.</span>
+            </h2>
+            <p className="text-slate-400 text-lg mb-8 leading-relaxed">
+              Welcome to Cliftonville, a premier supported living community designed to provide exceptional care and support for adults aged 18 and above.
+            </p>
+            
+            <div className="mb-8 pl-6 border-l-4 border-sky-500">
+              <p className="text-xl italic font-light text-white">
+                "To create a safe, nurturing environment where residents can thrive and lead fulfilling lives."
+              </p>
+              <p className="text-sky-400 font-bold mt-2">— Our Mission</p>
+            </div>
+
+            <Link to="/about" className="inline-flex items-center gap-2 text-white font-bold hover:text-sky-400 transition-colors">
+              Learn more about us <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
       </section>
+
+      {/* --- FACILITIES GLIMPSE --- */}
+      <section className="py-24 bg-sky-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-2">World-Class Facilities</h2>
+              <p className="text-slate-600">Everything you need for a comfortable life.</p>
+            </div>
+            <Link to="/facilities" className="hidden md:flex px-6 py-3 bg-white text-slate-900 rounded-full font-bold shadow-sm hover:shadow-md transition">
+              View All Facilities
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { title: "Modern Accommodation", desc: "67 beautifully designed residential units across 3 apartment blocks.", img: buildingImage },
+              { title: "Professional Staff", desc: "Trained caregivers providing 24/7 compassionate support.", img: staffImage },
+              { title: "Premium Amenities", desc: "Golf course, gym, spa, pool, and restaurant on-site.", img: poolImage },
+            ].map((card, idx) => (
+              <div key={idx} className="group relative h-80 rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                <img src={card.img} alt={card.title} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-8">
+                  <h3 className="text-white text-xl font-bold mb-2">{card.title}</h3>
+                  <p className="text-slate-300 text-sm">{card.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-8 text-center md:hidden">
+            <Link to="/facilities" className="inline-block px-6 py-3 bg-white text-slate-900 rounded-full font-bold shadow-sm">
+              View All Facilities
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* --- CTA --- */}
+      <section className="py-20">
+         <div className="max-w-5xl mx-auto px-6">
+           <div className="bg-sky-600 rounded-[3rem] p-12 text-center text-white relative overflow-hidden shadow-[0_0_20px_rgba(2,132,199,0.3)]">
+             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+             
+             <h2 className="text-3xl md:text-5xl font-bold mb-6 relative z-10">Ready to learn more?</h2>
+             <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto relative z-10">
+               Our team is ready to answer any questions and help you explore how Cliftonville Gardens can support you or your loved ones.
+             </p>
+             <Link to="/contact" className="relative z-10 inline-block bg-white text-sky-600 px-10 py-4 rounded-full font-bold hover:bg-sky-50 transition transform hover:-translate-y-1 shadow-lg">
+               Get in Touch
+             </Link>
+           </div>
+         </div>
+      </section>
+
     </div>
   );
 };
