@@ -3,7 +3,10 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom';
 import { Shield, Heart, Sun, ArrowRight, ArrowDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Import poster/flyer images for hero carousel
+// Hero image
+import heroImage from '../assets/heroimage.jpg';
+
+// Posters/flyers (used in the Coming Soon section carousel)
 import poster1 from '../assets/posters/IMG-20251212-WA0006.jpg';
 import poster2 from '../assets/posters/IMG-20251212-WA0007.jpg';
 import poster3 from '../assets/posters/IMG-20251212-WA0008.jpg';
@@ -46,6 +49,7 @@ const TypewriterText = ({ text, className, delay = 0 }) => {
 
 // Particle component for floating effect
 const Particles = () => {
+  const viewportH = typeof window !== 'undefined' ? window.innerHeight : 900;
   const particles = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     left: Math.random() * 100,
@@ -67,7 +71,7 @@ const Particles = () => {
             height: particle.size,
           }}
           animate={{
-            y: [0, -window.innerHeight - 100],
+            y: [0, -viewportH - 100],
             opacity: [0, 1, 1, 0],
             scale: [0, 1, 1, 0.5],
           }}
@@ -117,27 +121,27 @@ const CarouselImage = ({ src, isActive, direction }) => {
 };
 
 const Home = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll();
   
-  const heroImages = [poster1, poster2, poster3, poster4];
+  const [flyerSlide, setFlyerSlide] = useState(0);
+  const flyerImages = [poster1, poster2, poster3, poster4];
   
   // Parallax transforms
   const heroY = useTransform(scrollYProgress, [0, 0.3], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.3]);
   const textY = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
 
-  // Auto-advance carousel
+  // Auto-advance flyers carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+      setFlyerSlide((prev) => (prev + 1) % flyerImages.length);
     }, 6000);
     return () => clearInterval(interval);
   }, []);
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  const nextFlyer = () => setFlyerSlide((prev) => (prev + 1) % flyerImages.length);
+  const prevFlyer = () => setFlyerSlide((prev) => (prev - 1 + flyerImages.length) % flyerImages.length);
 
   // Staggered word animation variants
   const containerVariants = {
@@ -175,18 +179,23 @@ const Home = () => {
         ref={heroRef}
         className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
       >
-        {/* Background Carousel */}
+        {/* Background Single Image (cinematic Ken Burns) */}
         <motion.div 
           className="absolute inset-0"
           style={{ y: heroY, opacity: heroOpacity }}
         >
-          {heroImages.map((img, idx) => (
-            <CarouselImage 
-              key={idx} 
-              src={img} 
-              isActive={currentSlide === idx}
-            />
-          ))}
+          <motion.img
+            src={heroImage}
+            alt="Cliftonville Gardens"
+            className="w-full h-full object-cover object-center"
+            animate={{ scale: [1, 1.08] }}
+            transition={{
+              duration: 10,
+              ease: "linear",
+              repeat: Infinity,
+              repeatType: "mirror",
+            }}
+          />
           
           {/* Gradient overlay - subtle, no blue tint */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
@@ -195,35 +204,6 @@ const Home = () => {
 
         {/* Floating Particles */}
         <Particles />
-
-        {/* Carousel Navigation Dots */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {heroImages.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentSlide(idx)}
-              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                currentSlide === idx 
-                  ? 'bg-white w-6 md:w-8' 
-                  : 'bg-white/50 hover:bg-white/80'
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Carousel Arrows - Hidden on mobile */}
-        <button 
-          onClick={prevSlide}
-          className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all hidden md:block"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button 
-          onClick={nextSlide}
-          className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all hidden md:block"
-        >
-          <ChevronRight size={24} />
-        </button>
 
         {/* Hero Content */}
         <motion.div 
@@ -396,77 +376,49 @@ const Home = () => {
             </p>
           </motion.div>
 
-          {/* Mobile: Horizontal Scroll, Desktop: Grid */}
-          <div className="relative">
-            {/* Mobile Horizontal Scroll */}
-            <div className="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-6 -mx-4 px-4 scrollbar-hide">
-              {[poster1, poster2, poster3, poster4].map((poster, idx) => (
-                <motion.div
+          {/* Flyers carousel (hero-style crossfade + Ken Burns) */}
+          <div className="relative max-w-5xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] sm:aspect-[16/10] bg-slate-900">
+              {flyerImages.map((img, idx) => (
+                <CarouselImage
                   key={idx}
-                  initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
-                  whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.6 }}
-                  className="flex-shrink-0 w-[280px] snap-center"
-                >
-                  <motion.div
-                    className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]"
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <img 
-                      src={poster} 
-                      alt={`Cliftonville Flyer ${idx + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
-                  </motion.div>
-                </motion.div>
+                  src={img}
+                  isActive={flyerSlide === idx}
+                />
               ))}
-            </div>
 
-            {/* Desktop Grid with 3D Tilt */}
-            <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {[poster1, poster2, poster3, poster4].map((poster, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 50, rotateX: -20 }}
-                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.15, duration: 0.7, ease: "easeOut" }}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    rotateY: 5,
-                    z: 50,
-                  }}
-                  className="perspective-1000 cursor-pointer"
-                >
-                  <motion.div
-                    className="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-[3/4] preserve-3d"
-                    animate={{
-                      y: [0, -5, 0],
-                    }}
-                    transition={{
-                      y: {
-                        duration: 3 + idx * 0.5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }
-                    }}
-                  >
-                    <img 
-                      src={poster} 
-                      alt={`Cliftonville Flyer ${idx + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Hover glow */}
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-t from-sky-600/30 to-transparent"
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                    />
-                  </motion.div>
-                </motion.div>
-              ))}
+              {/* Subtle overlay for polish */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10" />
+
+              {/* Dots */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+                {flyerImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setFlyerSlide(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      flyerSlide === idx ? 'bg-white w-10' : 'bg-white/50 hover:bg-white/80 w-3'
+                    }`}
+                    aria-label={`Show flyer ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Arrows (desktop only) */}
+              <button
+                onClick={prevFlyer}
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all hidden md:block"
+                aria-label="Previous flyer"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={nextFlyer}
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all hidden md:block"
+                aria-label="Next flyer"
+              >
+                <ChevronRight size={24} />
+              </button>
             </div>
           </div>
         </div>

@@ -58,9 +58,6 @@ const Layout = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen font-sans text-slate-800 bg-stone-50 selection:bg-sky-600 selection:text-white">
-      {/* Floating Posters - Parallax decorative elements */}
-      <FloatingPosters />
-      
       {/* Top Bar - Sleek & Dark */}
       <div className="bg-slate-900 text-slate-300 text-xs py-2.5 hidden lg:block tracking-wide">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -173,8 +170,8 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      {/* Footer - Updated Info & Clean Design */}
-      <footer className="bg-slate-900 text-slate-400 py-20 border-t border-slate-800">
+      {/* Footer - Updated Info & Brighter Design */}
+      <footer className="bg-slate-700 text-slate-300 py-20 border-t border-slate-600">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
@@ -192,7 +189,7 @@ const Layout = ({ children }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors cursor-pointer"
+                  className="w-10 h-10 rounded-full bg-slate-600 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors cursor-pointer"
                 >
                   <social.icon size={18}/>
                 </a>
