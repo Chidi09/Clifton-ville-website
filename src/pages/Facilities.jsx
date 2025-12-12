@@ -18,6 +18,14 @@ import restaurantImage from '../assets/The dining area tables.jpg';
 import clinicImage from '../assets/Clinic.jpg';
 import minimartImage from '../assets/Mini-mart.jpg';
 
+// Import new facility images
+import salonImage from '../assets/facilities images/barbing and hairdressing saloon.jpg';
+import hotTubImage from '../assets/facilities images/hot tub.jpg';
+import saunaImage from '../assets/facilities images/sauna.jpg';
+import massageImage from '../assets/facilities images/massage therapy room.jpg';
+import therapyImage from '../assets/facilities images/therapy.jpg';
+import counselingImage from '../assets/facilities images/counselling room.jpg';
+
 const Facilities = () => {
   const facilityCategories = [
     {
@@ -36,9 +44,9 @@ const Facilities = () => {
       items: [
         { name: "Pool Area", image: poolImage },
         { name: "Ample Greenery", image: greeneryImage },
-        { name: "Hot Tub", image: poolImage, placeholder: true },
-        { name: "Sauna Facilities", image: poolImage, placeholder: true },
-        { name: "Massage Therapy Room", image: poolImage, placeholder: true },
+        { name: "Hot Tub", image: hotTubImage },
+        { name: "Sauna Facilities", image: saunaImage },
+        { name: "Massage Therapy Room", image: massageImage },
       ]
     },
     {
@@ -54,15 +62,15 @@ const Facilities = () => {
       items: [
         { name: "On-site Clinic/Laboratory Services", image: clinicImage },
         { name: "Mini-Mart", image: minimartImage },
-        { name: "Barbing and Hair Dressing Salon", image: clinicImage, placeholder: true },
+        { name: "Barbing and Hair Dressing Salon", image: salonImage },
       ]
     },
     {
       title: "Therapy & Support",
       icon: Brain,
       items: [
-        { name: "Occupational Therapy Room", image: clinicImage, placeholder: true },
-        { name: "Mental Health & Counseling Rooms", image: clinicImage, placeholder: true },
+        { name: "Occupational Therapy Room", image: therapyImage },
+        { name: "Mental Health & Counseling Rooms", image: counselingImage },
       ]
     },
   ];
