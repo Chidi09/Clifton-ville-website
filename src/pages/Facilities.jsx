@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Building2, Dumbbell, UtensilsCrossed, Stethoscope, Waves, TreePine, Gamepad2 } from 'lucide-react';
+import { Building2, Dumbbell, UtensilsCrossed, Stethoscope, Waves, TreePine, Gamepad2, Scissors, Sparkles, UserCheck, Brain } from 'lucide-react';
 
 // Import actual facility images
 import buildingImage1 from '../assets/IMG-20251017-WA0008.jpg';
@@ -36,6 +36,9 @@ const Facilities = () => {
       items: [
         { name: "Pool Area", image: poolImage },
         { name: "Ample Greenery", image: greeneryImage },
+        { name: "Hot Tub", image: poolImage, placeholder: true },
+        { name: "Sauna Facilities", image: poolImage, placeholder: true },
+        { name: "Massage Therapy Room", image: poolImage, placeholder: true },
       ]
     },
     {
@@ -49,8 +52,17 @@ const Facilities = () => {
       title: "Convenience & Medical",
       icon: Stethoscope,
       items: [
-        { name: "On-site Clinic", image: clinicImage },
+        { name: "On-site Clinic/Laboratory Services", image: clinicImage },
         { name: "Mini-Mart", image: minimartImage },
+        { name: "Barbing and Hair Dressing Salon", image: clinicImage, placeholder: true },
+      ]
+    },
+    {
+      title: "Therapy & Support",
+      icon: Brain,
+      items: [
+        { name: "Occupational Therapy Room", image: clinicImage, placeholder: true },
+        { name: "Mental Health & Counseling Rooms", image: clinicImage, placeholder: true },
       ]
     },
   ];
@@ -247,7 +259,7 @@ const Facilities = () => {
               className="p-6"
             >
               <div className="text-5xl md:text-6xl font-bold text-orange-400 mb-2">1</div>
-              <div className="uppercase tracking-widest text-sm">On-site Clinic/Laboratory Services</div>
+              <div className="uppercase tracking-widest text-sm">On-site Clinic/Lab</div>
             </motion.div>
           </div>
         </div>
