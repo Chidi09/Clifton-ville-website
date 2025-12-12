@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, Image as ImageIcon, Video, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -156,33 +156,44 @@ const Progress = () => {
     setCurrentIndex(filteredIndex >= 0 ? filteredIndex : 0);
   };
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setSelectedMedia(null);
     setSelectedType(null);
-  };
+  }, []);
 
-  const navigateMedia = (direction) => {
+  const navigateMedia = useCallback((direction) => {
+    if (!selectedMedia || filteredMedia.length === 0) return;
+    
+    const currentMediaIndex = filteredMedia.findIndex(m => m.src === selectedMedia);
+    if (currentMediaIndex === -1) return;
+    
     const newIndex = direction === 'next' 
-      ? (currentIndex + 1) % filteredMedia.length
-      : (currentIndex - 1 + filteredMedia.length) % filteredMedia.length;
+      ? (currentMediaIndex + 1) % filteredMedia.length
+      : (currentMediaIndex - 1 + filteredMedia.length) % filteredMedia.length;
     
     const media = filteredMedia[newIndex];
     setSelectedMedia(media.src);
     setSelectedType(media.type);
     setCurrentIndex(newIndex);
-  };
+  }, [selectedMedia, filteredMedia]);
 
   // Keyboard navigation
   useEffect(() => {
+    if (!selectedMedia) return;
+    
     const handleKeyPress = (e) => {
-      if (!selectedMedia) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') navigateMedia('prev');
-      if (e.key === 'ArrowRight') navigateMedia('next');
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        navigateMedia('prev');
+      } else if (e.key === 'ArrowRight') {
+        navigateMedia('next');
+      }
     };
+    
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [selectedMedia, filteredMedia]);
+  }, [selectedMedia, navigateMedia, closeLightbox]);
 
   return (
     <div>
@@ -202,7 +213,7 @@ const Progress = () => {
             <span className="inline-block py-2 px-4 mb-6 rounded-full bg-white/10 text-white font-bold text-sm uppercase tracking-wider">
               Project Updates
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Construction Progress</h1>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Progress on the Whole Project</h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               Watch our community take shape. See the latest developments and milestones as we build Cliftonville Gardens.
             </p>
