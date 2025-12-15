@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Heart, Sun, ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Building2, Clock } from 'lucide-react';
+import { Shield, Heart, Sun, ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Building2, Clock, FileText, CheckCircle2, Receipt, FileCheck, MapPin, Award } from 'lucide-react';
 
 // Hero image
 import heroImage from '../assets/heroimage.jpg';
@@ -584,6 +584,104 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          VERIFIED DOCUMENTATION SECTION
+          ============================================ */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#003399] to-blue-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#f59e0b] rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <span className="inline-block py-2 px-4 mb-4 rounded-full bg-white/10 backdrop-blur-sm text-white font-bold text-xs uppercase tracking-wider border border-white/20">
+              What We Offer Alongside
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
+              Verified Documentation
+            </h2>
+            <p className="text-blue-100 text-base md:text-lg max-w-2xl mx-auto">
+              All documents are processed immediately upon purchase completion and verified by our legal team.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {[
+              {
+                icon: Receipt,
+                title: "Receipt of Payment",
+                desc: "Official payment confirmation document",
+                color: "from-emerald-500 to-teal-600"
+              },
+              {
+                icon: FileText,
+                title: "Deed of Assignment",
+                desc: "Legal transfer of property ownership",
+                color: "from-blue-500 to-indigo-600"
+              },
+              {
+                icon: MapPin,
+                title: "Registered Survey",
+                desc: "Official land survey and boundary documentation",
+                color: "from-orange-500 to-amber-600"
+              },
+              {
+                icon: Award,
+                title: "Certificate of Occupancy (C of O)",
+                desc: "Government-approved occupancy certificate",
+                color: "from-purple-500 to-pink-600"
+              }
+            ].map((doc, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="bg-white/10 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 shadow-xl hover:shadow-2xl"
+              >
+                <div className={`w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br ${doc.color} rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-lg`}>
+                  <doc.icon size={32} className="text-white" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">
+                  {doc.title}
+                </h3>
+                <p className="text-blue-100 text-sm md:text-base leading-relaxed">
+                  {doc.desc}
+                </p>
+                <div className="mt-4 md:mt-6 flex items-center gap-2 text-emerald-300">
+                  <CheckCircle2 size={20} className="flex-shrink-0" />
+                  <span className="text-sm font-semibold">Verified & Processed</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-12 md:mt-16 text-center"
+          >
+            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 md:px-8 py-4 md:py-5 rounded-2xl border border-white/20">
+              <FileCheck size={24} className="text-[#f59e0b]" />
+              <div className="text-left">
+                <p className="font-bold text-white text-sm md:text-base">Immediate Processing</p>
+                <p className="text-blue-100 text-xs md:text-sm">All documents processed immediately upon purchase completion</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

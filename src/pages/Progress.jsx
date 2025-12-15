@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, Image as ImageIcon, Video, ChevronLeft, ChevronRight } from 'lucide-react';
 
+// Import site layout image
+import siteLayoutImage from '../assets/site layout.jpg';
+
 // Import all construction images
 import img0044 from '../assets/construction/IMG-20251212-WA0044.jpg';
 import img0045 from '../assets/construction/IMG-20251212-WA0045.jpg';
@@ -281,6 +284,53 @@ const Progress = () => {
             <p className="text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed">
               Watch our community take shape. See the latest developments and milestones as we build Cliftonville Gardens.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Premium Site Layout Showcase */}
+      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8 md:mb-12"
+          >
+            <span className="inline-block py-2 px-4 mb-4 rounded-full bg-[#003399]/10 text-[#003399] font-bold text-xs uppercase tracking-wider">
+              Project Overview
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 md:mb-4">
+              Site Layout & Design
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto">
+              Explore our comprehensive site layout showcasing the thoughtful design and strategic placement of all facilities
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative max-w-6xl mx-auto"
+          >
+            <div className="relative rounded-3xl md:rounded-[2rem] overflow-hidden shadow-2xl border-4 border-[#003399]/20 bg-slate-900">
+              <motion.img
+                src={siteLayoutImage}
+                alt="Cliftonville Gardens Site Layout"
+                className="w-full h-auto object-contain"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.6 }}
+              />
+              {/* Premium overlay effect */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+              {/* Premium border glow on hover */}
+              <div className="absolute inset-0 border-4 border-[#003399]/0 hover:border-[#003399]/30 rounded-3xl md:rounded-[2rem] transition-all duration-500 pointer-events-none" />
+            </div>
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#f59e0b]/20 rounded-full blur-3xl -z-10" />
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-[#003399]/20 rounded-full blur-3xl -z-10" />
           </motion.div>
         </div>
       </section>

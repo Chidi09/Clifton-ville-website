@@ -72,34 +72,34 @@ const Layout = ({ children }) => {
 
       {/* Main Navigation - Glassmorphism */}
       <nav 
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-1.5' : 'bg-white py-2'
+        className={`sticky top-0 z-50 transition-all duration-300 border-b ${
+          scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-0 border-stone-200' : 'bg-white py-0 border-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <div className="relative h-24 w-64 flex items-center">
+            <div className="relative z-10 h-32 md:h-40 lg:h-48 -my-8 md:-my-12 lg:-my-14 w-auto flex items-center transition-all duration-300">
               <img 
                 src={navLogo} 
                 alt="Cliftonville Gardens" 
-                className="h-full w-full object-contain object-left group-hover:scale-[1.02] transition-transform duration-300"
+                className="h-full w-auto object-contain object-left group-hover:scale-[1.02] transition-transform duration-300 drop-shadow-sm"
               />
             </div>
           </Link>
           
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8 font-medium">
             {navLinks.map((link) => (
               <Link 
                 key={link.name}
                 to={link.path} 
-                className={`text-sm font-semibold transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-sky-600 after:transition-all hover:after:w-full ${location.pathname === link.path ? "text-sky-600 after:w-full" : "text-slate-600 hover:text-sky-600"}`}
+                className={`text-sm transition-colors duration-300 relative py-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-sky-600 after:transition-all hover:after:w-full ${location.pathname === link.path ? "text-sky-600 after:w-full" : "text-slate-600 hover:text-sky-600"}`}
               >
                 {link.name}
               </Link>
             ))}
-            <Link to="/contact" className="bg-sky-600 text-white px-7 py-3 rounded-full text-sm font-bold shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:bg-sky-500 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+            <Link to="/contact" className="bg-sky-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:bg-sky-500 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
               Contact Us
             </Link>
           </div>
@@ -122,8 +122,8 @@ const Layout = ({ children }) => {
             className="fixed inset-0 z-[60] bg-white lg:hidden flex flex-col"
           >
             <div className="p-6 flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <img src={navLogo} alt="Cliftonville" className="h-20 w-20 object-contain" />
+              <div className="flex items-center gap-3">
+                <img src={navLogo} alt="Cliftonville" className="h-28 w-auto object-contain" />
                 <span className="font-bold text-xl text-slate-800">Cliftonville</span>
               </div>
               <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-slate-100 rounded-full text-slate-600">
