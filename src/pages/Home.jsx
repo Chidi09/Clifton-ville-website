@@ -27,6 +27,25 @@ import whatsappImg6 from '../assets/WhatsApp Image 2025-12-29 at 9.56.06 AM.jpeg
 
 const whatsappImages = [whatsappImg1, whatsappImg2, whatsappImg3, whatsappImg4, whatsappImg5, whatsappImg6];
 
+// Slideshow data with descriptions for Home page
+const slideshowData = [
+  {
+    image: whatsappImg1,
+    title: "Modern Living Spaces",
+    description: "Experience thoughtfully designed accommodations that blend comfort, accessibility, and elegance in every detail."
+  },
+  {
+    image: whatsappImg2,
+    title: "Premium Amenities",
+    description: "Enjoy world-class facilities including recreational areas, wellness centers, and social spaces designed for your well-being."
+  },
+  {
+    image: whatsappImg3,
+    title: "Serene Environment",
+    description: "Discover a peaceful haven where tranquility meets modern convenience in the heart of Ogun State."
+  }
+];
+
 // Typing animation component
 const TypewriterText = ({ text, className, delay = 0 }) => {
   const [displayText, setDisplayText] = useState('');
@@ -136,6 +155,7 @@ const Home = () => {
   
   const [flyerSlide, setFlyerSlide] = useState(0);
   const flyerImages = [poster1, poster2, poster3, poster4];
+  const [currentSlide, setCurrentSlide] = useState(0);
   
   // Parallax transforms
   const heroY = useTransform(scrollYProgress, [0, 0.3], [0, 150]);
@@ -147,6 +167,14 @@ const Home = () => {
     const interval = setInterval(() => {
       setFlyerSlide((prev) => (prev + 1) % flyerImages.length);
     }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideshowData.length);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -541,41 +569,6 @@ const Home = () => {
             ))}
           </div>
 
-          {/* Premium Image Gallery */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="mt-16 md:mt-20"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {whatsappImages.map((img, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="group relative overflow-hidden rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <motion.img
-                      src={img}
-                      alt={`Cliftonville Gardens ${idx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                  </div>
-                  {/* Elegant overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  {/* Premium border effect */}
-                  <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 rounded-2xl md:rounded-3xl transition-all duration-300 pointer-events-none" />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -630,6 +623,85 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Classy Slideshow Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-12 md:mt-16"
+          >
+            <div className="relative max-w-6xl mx-auto rounded-3xl md:rounded-[2rem] overflow-hidden shadow-2xl bg-slate-900 aspect-[16/9] md:aspect-[21/9]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <img
+                    src={slideshowData[currentSlide].image}
+                    alt={slideshowData[currentSlide].title}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Dark gradient overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+                  
+                  {/* Content overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 lg:p-16">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="max-w-2xl"
+                    >
+                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
+                        {slideshowData[currentSlide].title}
+                      </h3>
+                      <p className="text-white/90 text-lg md:text-xl lg:text-2xl leading-relaxed">
+                        {slideshowData[currentSlide].description}
+                      </p>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation arrows */}
+              <button
+                onClick={() => setCurrentSlide((prev) => (prev - 1 + slideshowData.length) % slideshowData.length)}
+                className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={() => setCurrentSlide((prev) => (prev + 1) % slideshowData.length)}
+                className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg"
+                aria-label="Next slide"
+              >
+                <ChevronRight size={24} />
+              </button>
+
+              {/* Slide indicators */}
+              <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+                {slideshowData.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      idx === currentSlide
+                        ? 'bg-white w-8'
+                        : 'bg-white/50 hover:bg-white/80 w-2'
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
