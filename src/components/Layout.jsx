@@ -177,8 +177,8 @@ const Layout = ({ children }) => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
                <div className="relative">
-                 <div className="absolute inset-0 bg-white rounded-xl blur-md opacity-60"></div>
-                 <img src={logoImage} alt="Cliftonville Gardens" className="relative h-20 w-20 rounded-xl object-cover drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                 <div className="absolute inset-0 bg-white rounded-xl blur-sm opacity-30"></div>
+                 <img src={logoImage} alt="Cliftonville Gardens" className="relative h-20 w-20 rounded-xl object-cover drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]" />
                </div>
                <span className="font-bold text-2xl tracking-tight text-white">Cliftonville Gardens</span>
             </div>

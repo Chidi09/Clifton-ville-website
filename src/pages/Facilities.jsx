@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Building2, Dumbbell, UtensilsCrossed, Stethoscope, Waves, TreePine, Gamepad2, Scissors, Sparkles, UserCheck, Brain } from 'lucide-react';
+import { Building2, Dumbbell, UtensilsCrossed, Stethoscope, Waves, TreePine, Gamepad2, Scissors, Sparkles, UserCheck, Brain, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Import actual facility images
 import buildingImage1 from '../assets/IMG-20251017-WA0008.jpg';
@@ -26,7 +26,29 @@ import massageImage from '../assets/facilities images/massage therapy room.jpg';
 import therapyImage from '../assets/facilities images/therapy.jpg';
 import counselingImage from '../assets/facilities images/counselling room.jpg';
 
+// Import WhatsApp images for dynamic slideshow
+import whatsappImg1 from '../assets/WhatsApp Image 2025-12-29 at 9.56.02 AM.jpeg';
+import whatsappImg2 from '../assets/WhatsApp Image 2025-12-29 at 9.56.04 AM (1).jpeg';
+import whatsappImg3 from '../assets/WhatsApp Image 2025-12-29 at 9.56.04 AM.jpeg';
+import whatsappImg4 from '../assets/WhatsApp Image 2025-12-29 at 9.56.05 AM (1).jpeg';
+import whatsappImg5 from '../assets/WhatsApp Image 2025-12-29 at 9.56.05 AM.jpeg';
+import whatsappImg6 from '../assets/WhatsApp Image 2025-12-29 at 9.56.06 AM.jpeg';
+
+const whatsappImages = [whatsappImg1, whatsappImg2, whatsappImg3, whatsappImg4, whatsappImg5, whatsappImg6];
+
 const Facilities = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedImages] = useState(whatsappImages.slice(0, 3)); // Use first 3 images
+
+  // Auto-rotate slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % selectedImages.length);
+    }, 4000); // Change every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [selectedImages.length]);
+
   const facilityCategories = [
     {
       title: "Recreation & Sports",
@@ -116,6 +138,95 @@ const Facilities = () => {
             <p className="text-xl text-sky-100 max-w-3xl mx-auto">
               State-of-the-art facilities for unmatched comfort and convenience in Itori, Ewekoro LGA, Ogun State.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Dynamic Slideshow Section */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8 md:mb-12"
+          >
+            <span className="inline-block py-2 px-4 mb-4 rounded-full bg-sky-600/10 text-sky-600 font-bold text-xs uppercase tracking-wider">
+              Dynamic View
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 md:mb-4">
+              A Dynamic View of Cliftonville
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto">
+              Experience the beauty and elegance of our world-class facilities through this captivating visual journey
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative max-w-5xl mx-auto"
+          >
+            <div className="relative rounded-3xl md:rounded-[2rem] overflow-hidden shadow-2xl bg-slate-900 aspect-[16/10] md:aspect-[16/9]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <img
+                    src={selectedImages[currentSlide]}
+                    alt={`Cliftonville Gardens view ${currentSlide + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation arrows */}
+              <button
+                onClick={() => setCurrentSlide((prev) => (prev - 1 + selectedImages.length) % selectedImages.length)}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg"
+                aria-label="Previous image"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={() => setCurrentSlide((prev) => (prev + 1) % selectedImages.length)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg"
+                aria-label="Next image"
+              >
+                <ChevronRight size={24} />
+              </button>
+
+              {/* Slide indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+                {selectedImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      idx === currentSlide
+                        ? 'bg-white w-8'
+                        : 'bg-white/50 hover:bg-white/80 w-2'
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute top-4 right-4 z-10 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
+                <span className="text-white text-sm font-semibold">
+                  {currentSlide + 1} / {selectedImages.length}
+                </span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
