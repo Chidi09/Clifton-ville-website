@@ -17,6 +17,16 @@ import buildingImage from '../assets/IMG-20251017-WA0008.jpg';
 import staffImage from '../assets/lady on blue nurse clothe.jpg';
 import poolImage from '../assets/Pool.jpg';
 
+// Import WhatsApp images for Why Choose Cliftonville gallery
+import whatsappImg1 from '../assets/WhatsApp Image 2025-12-29 at 9.56.02 AM.jpeg';
+import whatsappImg2 from '../assets/WhatsApp Image 2025-12-29 at 9.56.04 AM (1).jpeg';
+import whatsappImg3 from '../assets/WhatsApp Image 2025-12-29 at 9.56.04 AM.jpeg';
+import whatsappImg4 from '../assets/WhatsApp Image 2025-12-29 at 9.56.05 AM (1).jpeg';
+import whatsappImg5 from '../assets/WhatsApp Image 2025-12-29 at 9.56.05 AM.jpeg';
+import whatsappImg6 from '../assets/WhatsApp Image 2025-12-29 at 9.56.06 AM.jpeg';
+
+const whatsappImages = [whatsappImg1, whatsappImg2, whatsappImg3, whatsappImg4, whatsappImg5, whatsappImg6];
+
 // Typing animation component
 const TypewriterText = ({ text, className, delay = 0 }) => {
   const [displayText, setDisplayText] = useState('');
@@ -530,6 +540,42 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Premium Image Gallery */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="mt-16 md:mt-20"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {whatsappImages.map((img, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group relative overflow-hidden rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <motion.img
+                      src={img}
+                      alt={`Cliftonville Gardens ${idx + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                  </div>
+                  {/* Elegant overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Premium border effect */}
+                  <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 rounded-2xl md:rounded-3xl transition-all duration-300 pointer-events-none" />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
