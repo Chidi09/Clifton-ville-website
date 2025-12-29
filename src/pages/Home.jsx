@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Heart, Sun, ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Building2, Clock, FileText, CheckCircle2, Receipt, FileCheck, MapPin, Award } from 'lucide-react';
+import { Shield, Heart, Sun, ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Building2, Clock, FileText, CheckCircle2, Receipt, FileCheck, MapPin, Award, Star } from 'lucide-react';
 
 // Hero image
 import heroImage from '../assets/heroimage.jpg';
@@ -32,17 +32,22 @@ const slideshowData = [
   {
     image: whatsappImg1,
     title: "Modern Living Spaces",
-    description: "Experience thoughtfully designed accommodations that blend comfort, accessibility, and elegance in every detail."
+    description: "Experience thoughtfully designed accommodations that blend comfort, accessibility, and elegance."
   },
   {
     image: whatsappImg2,
     title: "Premium Amenities",
-    description: "Enjoy world-class facilities including recreational areas, wellness centers, and social spaces designed for your well-being."
+    description: "Enjoy world-class facilities including recreational areas and wellness centers."
   },
   {
     image: whatsappImg3,
     title: "Serene Environment",
-    description: "Discover a peaceful haven where tranquility meets modern convenience in the heart of Ogun State."
+    description: "Discover a peaceful haven where tranquility meets modern convenience in Ogun State."
+  },
+  {
+    image: whatsappImg4,
+    title: "Community Life",
+    description: "Engage in a vibrant community designed for social connection and joy."
   }
 ];
 
@@ -174,7 +179,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slideshowData.length);
-    }, 5000);
+    }, 6000); // 6 seconds per slide
     return () => clearInterval(interval);
   }, []);
 
@@ -403,7 +408,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl md:rounded-3xl p-6 md:p-10 grid grid-cols-3 gap-4 md:gap-8 text-center"
+            className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl md:rounded-3xl p-6 md:p-10 grid grid-cols-3 gap-4 md:gap-8 text-center shadow-2xl"
           >
             {[
               { label: "Total Units", value: "67+", icon: Building2, color: "text-blue-400" },
@@ -573,95 +578,112 @@ const Home = () => {
       </section>
 
       {/* ============================================
-          FACILITIES GLIMPSE
+          FACILITIES GLIMPSE - UPGRADED & WORLD CLASS
           ============================================ */}
-      <section className="py-16 md:py-24 bg-sky-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4">
+      <section className="py-16 md:py-24 bg-slate-950 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-sky-900/10 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-blue-900/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">World-Class Facilities</h2>
-              <p className="text-slate-600 text-sm md:text-base">Everything you need for a comfortable life.</p>
+              <div className="flex items-center gap-2 mb-3">
+                <Star className="text-orange-500 fill-orange-500" size={20} />
+                <span className="text-orange-500 font-bold uppercase tracking-widest text-sm">Premium Living</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-3">World-Class Facilities</h2>
+              <p className="text-slate-400 text-sm md:text-lg max-w-lg">
+                Designed to elevate your lifestyle with unmatched comfort and convenience.
+              </p>
             </motion.div>
             <Link 
               to="/facilities" 
-              className="px-4 md:px-6 py-2 md:py-3 bg-white text-slate-900 rounded-full font-bold shadow-sm hover:shadow-md transition text-sm md:text-base"
+              className="px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/10 rounded-full font-bold transition-all hover:scale-105 flex items-center gap-2"
             >
-              View All Facilities
+              Explore All Facilities <ArrowRight size={16} />
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 md:gap-6">
+          {/* Feature Grid */}
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
             {[
-              { title: "Modern Accommodation", desc: "67 beautifully designed residential units across 3 apartment blocks.", img: buildingImage },
-              { title: "Professional Staff", desc: "Trained caregivers providing 24/7 compassionate support.", img: staffImage },
-              { title: "Premium Amenities", desc: "Golf course, gym, spa, pool, and restaurant on-site.", img: poolImage },
+              { title: "Modern Accommodation", desc: "67 residential units designed for luxury.", img: buildingImage },
+              { title: "Professional Staff", desc: "Compassionate support available 24/7.", img: staffImage },
+              { title: "Premium Amenities", desc: "Golf, gym, spa, and pools on-site.", img: poolImage },
             ].map((card, idx) => (
               <motion.div 
                 key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="group relative h-64 md:h-80 rounded-2xl md:rounded-3xl overflow-hidden shadow-lg cursor-pointer"
+                className="group relative h-72 md:h-80 rounded-3xl overflow-hidden cursor-pointer"
               >
                 <motion.img 
                   src={card.img} 
                   alt={card.title} 
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.7 }}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex flex-col justify-end p-6 md:p-8">
-                  <h3 className="text-white text-lg md:text-xl font-bold mb-1 md:mb-2">{card.title}</h3>
-                  <p className="text-slate-300 text-xs md:text-sm">{card.desc}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
+                  <h3 className="text-white text-xl font-bold mb-2 group-hover:text-sky-400 transition-colors">{card.title}</h3>
+                  <p className="text-slate-300 text-sm opacity-80 group-hover:opacity-100 transition-opacity">{card.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Classy Slideshow Section */}
+          {/* ====================================
+              THE UPGRADED SLIDESHOW
+              ==================================== */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-12 md:mt-16"
+            className="relative w-full mx-auto"
           >
-            <div className="relative max-w-6xl mx-auto rounded-3xl md:rounded-[2rem] overflow-hidden shadow-2xl bg-slate-900 aspect-[16/9] md:aspect-[21/9]">
+            {/* Main Container - Aspect Ratio Changes for Mobile vs Desktop */}
+            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 aspect-[4/5] md:aspect-[21/9] group bg-slate-900">
+              
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlide}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8 }}
                   className="absolute inset-0"
                 >
-                  <img
+                  {/* Ken Burns Effect Image */}
+                  <motion.img
                     src={slideshowData[currentSlide].image}
                     alt={slideshowData[currentSlide].title}
                     className="w-full h-full object-cover"
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 7, ease: "linear" }}
                   />
-                  {/* Dark gradient overlay for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
                   
-                  {/* Content overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 lg:p-16">
+                  {/* Gradient Overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent opacity-60" />
+
+                  {/* Glassmorphism Text Content */}
+                  <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 lg:p-16 flex flex-col justify-end items-start z-10">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
-                      className="max-w-2xl"
+                      className="bg-white/10 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-2xl max-w-xl"
                     >
-                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
+                      <h3 className="text-2xl md:text-4xl font-bold text-white mb-3">
                         {slideshowData[currentSlide].title}
                       </h3>
-                      <p className="text-white/90 text-lg md:text-xl lg:text-2xl leading-relaxed">
+                      <p className="text-slate-200 text-sm md:text-lg leading-relaxed">
                         {slideshowData[currentSlide].description}
                       </p>
                     </motion.div>
@@ -669,39 +691,49 @@ const Home = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation arrows */}
-              <button
-                onClick={() => setCurrentSlide((prev) => (prev - 1 + slideshowData.length) % slideshowData.length)}
-                className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft size={24} />
-              </button>
-              <button
-                onClick={() => setCurrentSlide((prev) => (prev + 1) % slideshowData.length)}
-                className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg"
-                aria-label="Next slide"
-              >
-                <ChevronRight size={24} />
-              </button>
-
-              {/* Slide indicators */}
-              <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
-                {slideshowData.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentSlide(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      idx === currentSlide
-                        ? 'bg-white w-8'
-                        : 'bg-white/50 hover:bg-white/80 w-2'
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
-                  />
-                ))}
+              {/* Navigation Arrows */}
+              <div className="absolute bottom-6 right-6 flex gap-3 z-20">
+                <button
+                  onClick={() => setCurrentSlide((prev) => (prev - 1 + slideshowData.length) % slideshowData.length)}
+                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md text-white flex items-center justify-center transition-all border border-white/20"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button
+                  onClick={() => setCurrentSlide((prev) => (prev + 1) % slideshowData.length)}
+                  className="w-12 h-12 rounded-full bg-sky-500 hover:bg-sky-600 text-white flex items-center justify-center transition-all shadow-lg shadow-sky-500/30"
+                >
+                  <ChevronRight size={24} />
+                </button>
               </div>
+
+              {/* Progress Bar at bottom */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-white/10 z-20">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 6, ease: "linear" }} // Matches interval
+                  className="h-full bg-sky-500"
+                />
+              </div>
+
+            </div>
+
+            {/* Pagination Indicators below */}
+            <div className="flex justify-center gap-3 mt-6">
+              {slideshowData.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    idx === currentSlide ? 'w-8 bg-sky-500' : 'w-2 bg-slate-700 hover:bg-slate-600'
+                  }`}
+                />
+              ))}
             </div>
           </motion.div>
+
         </div>
       </section>
 
