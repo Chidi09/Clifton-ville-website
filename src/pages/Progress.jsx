@@ -5,35 +5,21 @@ import { X, Play, Image as ImageIcon, Video, ChevronLeft, ChevronRight } from 'l
 // Import site layout image
 import siteLayoutImage from '../assets/site layout.jpg';
 
-// Import all construction images
-import img0044 from '../assets/construction/IMG-20251212-WA0044.jpg';
-import img0045 from '../assets/construction/IMG-20251212-WA0045.jpg';
-import img0046 from '../assets/construction/IMG-20251212-WA0046.jpg';
-import img0047 from '../assets/construction/IMG-20251212-WA0047.jpg';
-import img0048 from '../assets/construction/IMG-20251212-WA0048.jpg';
-import img0049 from '../assets/construction/IMG-20251212-WA0049.jpg';
-import img0050 from '../assets/construction/IMG-20251212-WA0050.jpg';
-import img0051 from '../assets/construction/IMG-20251212-WA0051.jpg';
-import img0052 from '../assets/construction/IMG-20251212-WA0052.jpg';
-import img0053 from '../assets/construction/IMG-20251212-WA0053.jpg';
-import img0054 from '../assets/construction/IMG-20251212-WA0054.jpg';
-import img0055 from '../assets/construction/IMG-20251212-WA0055.jpg';
-import img0056 from '../assets/construction/IMG-20251212-WA0056.jpg';
-import img0057 from '../assets/construction/IMG-20251212-WA0057.jpg';
-import img0058 from '../assets/construction/IMG-20251212-WA0058.jpg';
-import img0059 from '../assets/construction/IMG-20251212-WA0059.jpg';
-import img0060 from '../assets/construction/IMG-20251212-WA0060.jpg';
-import img0061 from '../assets/construction/IMG-20251212-WA0061.jpg';
-import img0062 from '../assets/construction/IMG-20251212-WA0062.jpg';
-import img0063 from '../assets/construction/IMG-20251212-WA0063.jpg';
-import img0064 from '../assets/construction/IMG-20251212-WA0064.jpg';
-import img0065 from '../assets/construction/IMG-20251212-WA0065.jpg';
-import img0066 from '../assets/construction/IMG-20251212-WA0066.jpg';
+// Import new project images
+import img1 from '../assets/img1.jpeg';
+import img2 from '../assets/img2.jpeg';
+import img3 from '../assets/img3.jpeg';
+import img4 from '../assets/img4.jpeg';
+import img5 from '../assets/img5.jpeg';
+import img6 from '../assets/img6.jpeg';
+import img7 from '../assets/img7.jpeg';
+import img8 from '../assets/img8.jpeg';
+import img9 from '../assets/img9.jpeg';
+import img10 from '../assets/img10.jpeg';
+import img11 from '../assets/img11.jpeg';
 
 const constructionImages = [
-  img0044, img0045, img0046, img0047, img0048, img0049, img0050, img0051,
-  img0052, img0053, img0054, img0055, img0056, img0057, img0058, img0059,
-  img0060, img0061, img0062, img0063, img0064, img0065, img0066,
+  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11
 ];
 
 // Import all construction videos

@@ -25,6 +25,19 @@ import whatsappImg4 from '../assets/WhatsApp Image 2025-12-29 at 9.56.05 AM (1).
 import whatsappImg5 from '../assets/WhatsApp Image 2025-12-29 at 9.56.05 AM.jpeg';
 import whatsappImg6 from '../assets/WhatsApp Image 2025-12-29 at 9.56.06 AM.jpeg';
 
+// Import new project images (for other pages)
+import img1 from '../assets/img1.jpeg';
+import img2 from '../assets/img2.jpeg';
+import img3 from '../assets/img3.jpeg';
+import img4 from '../assets/img4.jpeg';
+import img5 from '../assets/img5.jpeg';
+import img6 from '../assets/img6.jpeg';
+import img7 from '../assets/img7.jpeg';
+import img8 from '../assets/img8.jpeg';
+import img9 from '../assets/img9.jpeg';
+import img10 from '../assets/img10.jpeg';
+import img11 from '../assets/img11.jpeg';
+
 const whatsappImages = [whatsappImg1, whatsappImg2, whatsappImg3, whatsappImg4, whatsappImg5, whatsappImg6];
 
 // Slideshow data with descriptions for Home page
@@ -50,6 +63,9 @@ const slideshowData = [
     description: "Engage in a vibrant community designed for social connection and joy."
   }
 ];
+
+// New project images array (available for use in other components if needed)
+export const projectImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
 
 // Typing animation component
 const TypewriterText = ({ text, className, delay = 0 }) => {
