@@ -32,8 +32,17 @@ import vid0007 from '../assets/construction/VID-20251212-WA0007.mp4';
 import vidWhatsApp1 from '../assets/construction/WhatsApp Video 2025-12-12 at 15.29.49_90dd1dde.mp4';
 import vidWhatsApp2 from '../assets/construction/WhatsApp Video 2025-12-12 at 15.29.49_a08e3769.mp4';
 
+// New videos from March 2026
+import vidMar15_1 from '../assets/construction/WhatsApp Video 2026-03-15 at 10.40.54 PM.mp4';
+import vidMar15_2 from '../assets/construction/WhatsApp Video 2026-03-15 at 10.52.25 PM.mp4';
+import vidMar15_3 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.11.32 PM.mp4';
+import vidMar15_4 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.13.06 PM.mp4';
+import vidMar15_5 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.21.01 PM.mp4';
+import vidMar15_6 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.21.22 PM.mp4';
+
 const constructionVideos = [
   vid0001, vid0002, vid0003, vid0004, vid0006, vid0007, vidWhatsApp1, vidWhatsApp2,
+  vidMar15_1, vidMar15_2, vidMar15_3, vidMar15_4, vidMar15_5, vidMar15_6,
 ];
 
 // Lightbox component for viewing media
