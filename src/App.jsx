@@ -7,6 +7,7 @@ import Services from './pages/Services';
 import Facilities from './pages/Facilities';
 import Contact from './pages/Contact';
 import Progress from './pages/Progress';
+import Pricing from './pages/Pricing';
 
 // Scroll to top on route change component
 const ScrollToTop = () => {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/progress" element={<Progress />} />
+          <Route path="/pricing" element={<Pricing />} />
         </Routes>
       </Layout>
     </Router>

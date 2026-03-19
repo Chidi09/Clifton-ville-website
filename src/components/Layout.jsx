@@ -47,6 +47,7 @@ const Layout = ({ children }) => {
     { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Facilities', path: '/facilities' },
+    { name: 'Pricing', path: '/pricing' },
     { name: 'Work in Progress', path: '/progress' },
   ];
 

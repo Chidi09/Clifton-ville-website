@@ -473,12 +473,20 @@ const Home = () => {
               transition={{ delay: 0.2 }}
               className="mt-6 md:mt-8"
             >
-              <Link 
-                to="/contact" 
-                className="inline-block px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-[#003399] to-blue-700 text-white rounded-full font-bold text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                Buy Your Apartment Now
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
+                <Link
+                  to="/pricing"
+                  className="inline-block px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-[#003399] to-blue-700 text-white rounded-full font-bold text-base md:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                >
+                  View Pricing
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-block px-8 md:px-10 py-3 md:py-4 bg-white text-[#003399] border border-[#003399]/20 rounded-full font-bold text-base md:text-lg hover:bg-slate-50 hover:scale-105 transition-all duration-300 shadow-sm"
+                >
+                  Book a Consultation
+                </Link>
+              </div>
             </motion.div>
           </motion.div>
 
