@@ -362,8 +362,6 @@ const Progress = () => {
                 item={item}
                 idx={idx}
                 onOpenLightbox={openLightbox}
-                onRemove={handleRemoveItem}
-                isEditMode={editMode}
               />
             ))}
           </div>
