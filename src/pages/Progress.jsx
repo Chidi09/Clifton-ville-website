@@ -22,17 +22,7 @@ const constructionImages = [
   img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11
 ];
 
-// Import all construction videos
-import vid0001 from '../assets/construction/VID-20251212-WA0001.mp4';
-import vid0002 from '../assets/construction/VID-20251212-WA0002.mp4';
-import vid0003 from '../assets/construction/VID-20251212-WA0003.mp4';
-import vid0004 from '../assets/construction/VID-20251212-WA0004.mp4';
-import vid0006 from '../assets/construction/VID-20251212-WA0006.mp4';
-import vid0007 from '../assets/construction/VID-20251212-WA0007.mp4';
-import vidWhatsApp1 from '../assets/construction/WhatsApp Video 2025-12-12 at 15.29.49_90dd1dde.mp4';
-import vidWhatsApp2 from '../assets/construction/WhatsApp Video 2025-12-12 at 15.29.49_a08e3769.mp4';
-
-// New videos from March 2026
+// Latest videos from March 2026
 import vidMar15_1 from '../assets/construction/WhatsApp Video 2026-03-15 at 10.40.54 PM.mp4';
 import vidMar15_2 from '../assets/construction/WhatsApp Video 2026-03-15 at 10.52.25 PM.mp4';
 import vidMar15_3 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.11.32 PM.mp4';
@@ -41,8 +31,12 @@ import vidMar15_5 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.2
 import vidMar15_6 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.21.22 PM.mp4';
 
 const constructionVideos = [
-  vid0001, vid0002, vid0003, vid0004, vid0006, vid0007, vidWhatsApp1, vidWhatsApp2,
-  vidMar15_1, vidMar15_2, vidMar15_3, vidMar15_4, vidMar15_5, vidMar15_6,
+  vidMar15_1,
+  vidMar15_2,
+  vidMar15_3,
+  vidMar15_4,
+  vidMar15_5,
+  vidMar15_6,
 ];
 
 // Lightbox component for viewing media
@@ -129,7 +123,7 @@ const Lightbox = ({ media, type, isOpen, onClose, onNext, onPrev, currentIndex, 
 };
 
 // Media Item Component for proper ref handling
-const MediaItem = ({ item, idx, onOpenLightbox }) => {
+const MediaItem = ({ item, idx, onOpenLightbox, onRemove, isEditMode }) => {
   const videoRef = useRef(null);
 
   return (
@@ -139,7 +133,7 @@ const MediaItem = ({ item, idx, onOpenLightbox }) => {
       viewport={{ once: true }}
       transition={{ delay: idx * 0.02 }}
       className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-900 shadow-lg hover:shadow-2xl transition-all duration-500"
-      onClick={() => onOpenLightbox(item.src, item.type, idx)}
+      onClick={() => !isEditMode && onOpenLightbox(item.src, item.type, idx)}
       onMouseEnter={() => {
         if (item.type === 'video' && videoRef.current) {
           videoRef.current.play().catch(() => {});
@@ -188,6 +182,20 @@ const MediaItem = ({ item, idx, onOpenLightbox }) => {
       
       {/* Subtle border on hover */}
       <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/20 rounded-2xl transition-all duration-300 pointer-events-none" />
+      
+      {/* Remove button - only visible in edit mode */}
+      {isEditMode && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemove(item.index);
+          }}
+          className="absolute top-2 right-2 z-20 w-8 h-8 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transition-colors"
+          aria-label="Remove"
+        >
+          <X size={16} />
+        </button>
+      )}
     </motion.div>
   );
 };
@@ -197,12 +205,14 @@ const Progress = () => {
   const [selectedType, setSelectedType] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'images', 'videos'
+  const [editMode, setEditMode] = useState(false);
+  const [removedItems, setRemovedItems] = useState(new Set());
 
   // Combine all media for navigation
   const allMedia = [
     ...constructionImages.map((img, idx) => ({ type: 'image', src: img, index: idx })),
     ...constructionVideos.map((vid, idx) => ({ type: 'video', src: vid, index: idx + constructionImages.length })),
-  ];
+  ].filter(item => !removedItems.has(item.index));
 
   const filteredMedia = activeTab === 'all' 
     ? allMedia 
@@ -238,6 +248,10 @@ const Progress = () => {
     setSelectedType(media.type);
     setCurrentIndex(newIndex);
   }, [selectedMedia, filteredMedia]);
+
+  const handleRemoveItem = (index) => {
+    setRemovedItems(prev => new Set([...prev, index]));
+  };
 
   // Keyboard navigation
   useEffect(() => {
@@ -333,7 +347,7 @@ const Progress = () => {
       {/* Filter Tabs */}
       <section className="py-6 bg-gradient-to-b from-white to-slate-50 sticky top-0 z-40 border-b border-slate-200/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-center gap-3">
+          <div className="flex justify-center gap-3 flex-wrap items-center">
             {[
               { id: 'all', label: 'All Media' },
               { id: 'images', label: 'Photos' },
@@ -354,7 +368,30 @@ const Progress = () => {
                 {tab.label}
               </button>
             ))}
+            
+            {/* Edit Mode Toggle */}
+            <button
+              onClick={() => setEditMode(!editMode)}
+              className={`px-4 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ml-4 ${
+                editMode
+                  ? 'bg-red-500 text-white shadow-lg shadow-red-500/20'
+                  : 'bg-slate-200 text-slate-600 hover:bg-slate-300'
+              }`}
+            >
+              {editMode ? 'Done Editing' : 'Edit Mode'}
+            </button>
           </div>
+          
+          {/* Edit Mode Instructions */}
+          {editMode && (
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center text-red-600 text-sm mt-3 font-medium"
+            >
+              Click the X button on any item to remove it
+            </motion.p>
+          )}
         </div>
       </section>
 
@@ -368,6 +405,8 @@ const Progress = () => {
                 item={item}
                 idx={idx}
                 onOpenLightbox={openLightbox}
+                onRemove={handleRemoveItem}
+                isEditMode={editMode}
               />
             ))}
           </div>
