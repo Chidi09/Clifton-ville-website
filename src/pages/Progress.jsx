@@ -123,7 +123,7 @@ const Lightbox = ({ media, type, isOpen, onClose, onNext, onPrev, currentIndex, 
 };
 
 // Media Item Component for proper ref handling
-const MediaItem = ({ item, idx, onOpenLightbox, onRemove, isEditMode }) => {
+const MediaItem = ({ item, idx, onOpenLightbox }) => {
   const videoRef = useRef(null);
 
   return (
@@ -133,7 +133,7 @@ const MediaItem = ({ item, idx, onOpenLightbox, onRemove, isEditMode }) => {
       viewport={{ once: true }}
       transition={{ delay: idx * 0.02 }}
       className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-900 shadow-lg hover:shadow-2xl transition-all duration-500"
-      onClick={() => !isEditMode && onOpenLightbox(item.src, item.type, idx)}
+      onClick={() => onOpenLightbox(item.src, item.type, idx)}
       onMouseEnter={() => {
         if (item.type === 'video' && videoRef.current) {
           videoRef.current.play().catch(() => {});
@@ -182,20 +182,6 @@ const MediaItem = ({ item, idx, onOpenLightbox, onRemove, isEditMode }) => {
       
       {/* Subtle border on hover */}
       <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/20 rounded-2xl transition-all duration-300 pointer-events-none" />
-      
-      {/* Remove button - only visible in edit mode */}
-      {isEditMode && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onRemove(item.index);
-          }}
-          className="absolute top-2 right-2 z-20 w-8 h-8 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transition-colors"
-          aria-label="Remove"
-        >
-          <X size={16} />
-        </button>
-      )}
     </motion.div>
   );
 };
@@ -205,14 +191,12 @@ const Progress = () => {
   const [selectedType, setSelectedType] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'images', 'videos'
-  const [editMode, setEditMode] = useState(false);
-  const [removedItems, setRemovedItems] = useState(new Set());
 
   // Combine all media for navigation
   const allMedia = [
     ...constructionImages.map((img, idx) => ({ type: 'image', src: img, index: idx })),
     ...constructionVideos.map((vid, idx) => ({ type: 'video', src: vid, index: idx + constructionImages.length })),
-  ].filter(item => !removedItems.has(item.index));
+  ];
 
   const filteredMedia = activeTab === 'all' 
     ? allMedia 
@@ -248,10 +232,6 @@ const Progress = () => {
     setSelectedType(media.type);
     setCurrentIndex(newIndex);
   }, [selectedMedia, filteredMedia]);
-
-  const handleRemoveItem = (index) => {
-    setRemovedItems(prev => new Set([...prev, index]));
-  };
 
   // Keyboard navigation
   useEffect(() => {
@@ -347,7 +327,7 @@ const Progress = () => {
       {/* Filter Tabs */}
       <section className="py-6 bg-gradient-to-b from-white to-slate-50 sticky top-0 z-40 border-b border-slate-200/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-center gap-3 flex-wrap items-center">
+          <div className="flex justify-center gap-3">
             {[
               { id: 'all', label: 'All Media' },
               { id: 'images', label: 'Photos' },
@@ -368,30 +348,7 @@ const Progress = () => {
                 {tab.label}
               </button>
             ))}
-            
-            {/* Edit Mode Toggle */}
-            <button
-              onClick={() => setEditMode(!editMode)}
-              className={`px-4 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ml-4 ${
-                editMode
-                  ? 'bg-red-500 text-white shadow-lg shadow-red-500/20'
-                  : 'bg-slate-200 text-slate-600 hover:bg-slate-300'
-              }`}
-            >
-              {editMode ? 'Done Editing' : 'Edit Mode'}
-            </button>
           </div>
-          
-          {/* Edit Mode Instructions */}
-          {editMode && (
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center text-red-600 text-sm mt-3 font-medium"
-            >
-              Click the X button on any item to remove it
-            </motion.p>
-          )}
         </div>
       </section>
 
