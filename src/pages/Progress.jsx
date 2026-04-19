@@ -19,7 +19,8 @@ import img10 from '../assets/img10.jpeg';
 import img11 from '../assets/img11.jpeg';
 
 const constructionImages = [
-  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11
+  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11,
+  imgApr19_1, imgApr19_2,
 ];
 
 // Latest videos from March 2026
@@ -30,6 +31,14 @@ import vidMar15_4 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.1
 import vidMar15_5 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.21.01 PM.mp4';
 import vidMar15_6 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.21.22 PM.mp4';
 
+// Latest videos from April 2026
+import vidApr19_1 from '../assets/construction/WhatsApp Video 2026-04-19 at 3.45.14 PM.mp4';
+import vidApr19_2 from '../assets/construction/WhatsApp Video 2026-04-19 at 3.45.19 PM.mp4';
+
+// Latest images from April 2026
+import imgApr19_1 from '../assets/construction/WhatsApp Image 2026-04-19 at 3.45.15 PM.jpeg';
+import imgApr19_2 from '../assets/construction/WhatsApp Image 2026-04-19 at 3.45.15 PM (1).jpeg';
+
 const constructionVideos = [
   vidMar15_1,
   vidMar15_2,
@@ -37,6 +46,8 @@ const constructionVideos = [
   vidMar15_4,
   vidMar15_5,
   vidMar15_6,
+  vidApr19_1,
+  vidApr19_2,
 ];
 
 // Lightbox component for viewing media
