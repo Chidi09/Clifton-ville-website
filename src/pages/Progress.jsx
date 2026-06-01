@@ -21,6 +21,7 @@ import img11 from '../assets/img11.jpeg';
 const constructionImages = [
   img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11,
   imgApr19_1, imgApr19_2,
+  imgJun01_1, imgJun01_2, imgJun01_3, imgJun01_4, imgJun01_5, imgJun01_6, imgJun01_7, imgJun01_8,
 ];
 
 // Latest videos from March 2026
@@ -39,6 +40,21 @@ import vidApr19_2 from '../assets/construction/WhatsApp Video 2026-04-19 at 3.45
 import imgApr19_1 from '../assets/construction/WhatsApp Image 2026-04-19 at 3.45.15 PM.jpeg';
 import imgApr19_2 from '../assets/construction/WhatsApp Image 2026-04-19 at 3.45.15 PM (1).jpeg';
 
+// Latest images from June 2026
+import imgJun01_1 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.39 PM.jpeg';
+import imgJun01_2 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.39 PM (1).jpeg';
+import imgJun01_3 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.39 PM (2).jpeg';
+import imgJun01_4 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.40 PM.jpeg';
+import imgJun01_5 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.40 PM (1).jpeg';
+import imgJun01_6 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.41 PM.jpeg';
+import imgJun01_7 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.41 PM (1).jpeg';
+import imgJun01_8 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.41 PM (2).jpeg';
+
+// Latest videos from June 2026
+import vidJun01_1 from '../assets/construction/WhatsApp Video 2026-06-01 at 2.04.43 PM.mp4';
+import vidJun01_2 from '../assets/construction/WhatsApp Video 2026-06-01 at 2.04.51 PM.mp4';
+import vidJun01_3 from '../assets/construction/WhatsApp Video 2026-06-01 at 2.05.04 PM.mp4';
+
 const constructionVideos = [
   vidMar15_1,
   vidMar15_2,
@@ -48,6 +64,9 @@ const constructionVideos = [
   vidMar15_6,
   vidApr19_1,
   vidApr19_2,
+  vidJun01_1,
+  vidJun01_2,
+  vidJun01_3,
 ];
 
 // Lightbox component for viewing media
