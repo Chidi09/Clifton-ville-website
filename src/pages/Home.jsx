@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Heart, Sun, ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Building2, Clock, FileText, CheckCircle2, Receipt, FileCheck, MapPin, Award, Star } from 'lucide-react';
+import SEO from '../components/SEO';
 
 // Hero image
 import heroImage from '../assets/heroimage.jpg';
@@ -235,8 +236,43 @@ const Home = () => {
     }
   };
 
+  const homeJsonLd = {
+    "@type": ["RealEstateAgent", "LocalBusiness", "MedicalOrganization"],
+    "@id": "https://cliftonvillegardens.com/#business",
+    "name": "Cliftonville Gardens",
+    "url": "https://cliftonvillegardens.com",
+    "description": "Premier supported living community and luxury residential estate in Ogun State, Nigeria.",
+    "telephone": ["+2348125935055", "+447846324245"],
+    "email": "Laidegr.Cliftonville@outlook.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "GRA IBARA Housing Cluster 2, Abeokuta & Along Lagos-Abeokuta Expressway, Itori",
+      "addressLocality": "Abeokuta",
+      "addressRegion": "Ogun State",
+      "addressCountry": "NG"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Cliftonville Community Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Live-in Carer Support" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Domiciliary Care in Your Own Home" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Supported Living Facility Placement" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Abeokuta Residential Arena Turnkey Homes" } }
+      ]
+    }
+  };
+
   return (
     <div className="overflow-x-hidden">
+      <SEO
+        title="Premier Supported Living Community & Residential Arena"
+        description="Cliftonville Gardens offers world-class supported living care, 24/7 security, and luxury turnkey residences in Ogun State, Nigeria (Abeokuta & Itori)."
+        keywords={['Cliftonville Gardens', 'supported living Nigeria', 'assisted living Abeokuta', 'GRA Ibara homes', 'luxury real estate Ogun State']}
+        canonical="/"
+        badge="Supported Living & Luxury Residences"
+        jsonLd={homeJsonLd}
+      />
       
       {/* ============================================
           HERO SECTION - CINEMATIC FULLSCREEN

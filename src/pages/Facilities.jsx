@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Building2, Dumbbell, UtensilsCrossed, Stethoscope, Waves, TreePine, Gamepad2, Scissors, Sparkles, UserCheck, Brain } from 'lucide-react';
+import SEO from '../components/SEO';
 
 // Import actual facility images
 import buildingImage1 from '../assets/IMG-20251017-WA0008.jpg';
@@ -104,8 +105,33 @@ const Facilities = () => {
     { src: buildingImage4, alt: "Community View" },
   ];
 
+  const facilitiesJsonLd = {
+    "@type": "Place",
+    "@id": "https://cliftonvillegardens.com/facilities#amenities",
+    "name": "Cliftonville Gardens Facilities & Amenities",
+    "description": "World-class supported living facilities: wellness center, swimming pool, gym, mini-golf, on-site clinic, salon, sauna, and restaurant in Ogun State.",
+    "url": "https://cliftonvillegardens.com/facilities",
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Swimming Pool", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Wellness Gym & Fitness", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Mini-Golf Course & Tennis Court", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "On-site Clinic & Laboratory", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Sauna & Hot Tub", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Hair & Barber Salon", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Restaurant & Lounge", "value": true }
+    ]
+  };
+
   return (
     <div>
+      <SEO
+        title="World-Class Facilities & Estate Amenities"
+        description="Experience modern luxury and supported wellness: swimming pool, fitness gym, on-site clinic, salon, sauna, mini-golf, and 24/7 security."
+        keywords={['supported living facilities Nigeria', 'assisted living amenities Ogun State', 'wellness center Abeokuta', 'on-site clinic supported community']}
+        canonical="/facilities"
+        badge="World-Class Amenities"
+        jsonLd={facilitiesJsonLd}
+      />
       {/* Page Header */}
       <section className="bg-gradient-to-br from-sky-600 to-blue-800 py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

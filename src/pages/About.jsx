@@ -3,10 +3,27 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Heart, Target, Eye, Users, Award, Clock } from 'lucide-react';
 import nursingStaffImage from '../assets/lady helping a woman on crutches.jpg';
+import SEO from '../components/SEO';
 
 const About = () => {
+  const aboutJsonLd = {
+    "@type": "AboutPage",
+    "@id": "https://cliftonvillegardens.com/about#about",
+    "name": "About Cliftonville Gardens",
+    "description": "Learn about Cliftonville Gardens - Our mission, vision, values, and dedication to premier supported living and senior care in Ogun State, Nigeria.",
+    "url": "https://cliftonvillegardens.com/about"
+  };
+
   return (
     <div>
+      <SEO
+        title="About Us | Mission, Vision & Supported Living Care"
+        description="We nurture responsibly. Discover the heart behind Cliftonville Gardens and our commitment to dignity, comfort, and world-class supported living."
+        keywords={['about Cliftonville Gardens', 'supported living mission Nigeria', 'elderly care provider Ogun State', 'assisted living philosophy']}
+        canonical="/about"
+        badge="Who We Are"
+        jsonLd={aboutJsonLd}
+      />
       {/* Page Header */}
       <section className="bg-gradient-to-br from-[#003399] to-blue-900 py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

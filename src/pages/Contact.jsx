@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -89,8 +90,30 @@ const Contact = () => {
     },
   ];
 
+  const contactJsonLd = {
+    "@type": "ContactPage",
+    "@id": "https://cliftonvillegardens.com/contact#contact",
+    "name": "Contact Cliftonville Gardens",
+    "description": "Get in touch with Cliftonville Gardens for supported living consultations, site visits, and property advisory in Abeokuta and Itori, Ogun State.",
+    "url": "https://cliftonvillegardens.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Cliftonville Gardens",
+      "telephone": ["+2348125935055", "+447846324245"],
+      "email": "Laidegr.Cliftonville@outlook.com"
+    }
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen">
+      <SEO
+        title="Contact Us | Schedule a Site Visit & Consultation"
+        description="Get in touch with Cliftonville Gardens. Call +234 812 593 5055 or +44 7846 324245, email us, or book an in-person site visit in Abeokuta and Itori."
+        keywords={['contact Cliftonville Gardens', 'book site visit Abeokuta', 'supported living phone number Nigeria', 'GRA Ibara consultation']}
+        canonical="/contact"
+        badge="Get In Touch"
+        jsonLd={contactJsonLd}
+      />
       {/* Page Header */}
       <section className="bg-gradient-to-br from-[#003399] to-blue-900 py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

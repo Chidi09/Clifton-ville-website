@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Pill, Smile, Utensils, Activity, Heart, Stethoscope, Users, CalendarCheck, Scissors, Waves, Sparkles, UserCheck, Brain, Beaker } from 'lucide-react';
+import SEO from '../components/SEO';
 
 // Import service images
 import personalizedCareImage from '../assets/services images/Black elderly adult care consultation with nurse in modern supported living community.jpg';
@@ -121,8 +122,39 @@ const Services = () => {
     { icon: CalendarCheck, title: "Activity Planning", desc: "Structured daily activities and special events." },
   ];
 
+  const servicesJsonLd = {
+    "@type": "Service",
+    "@id": "https://cliftonvillegardens.com/services#services",
+    "serviceType": "Supported Living and Adult Care Services",
+    "provider": {
+      "@type": "Organization",
+      "name": "Cliftonville Gardens",
+      "url": "https://cliftonvillegardens.com"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Supported Care Catalog",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Live-in Carer Assistance" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Care in Your Own Home" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Care in Our Facility" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medication Management" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Recreational & Wellness Activities" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nutritious Meal Preparation" } }
+      ]
+    }
+  };
+
   return (
     <div>
+      <SEO
+        title="Our Services | Supported Living, Home Care & Wellness"
+        description="Discover comprehensive supported living services at Cliftonville Gardens: live-in carers, domiciliary home care, medication management, wellness, and nutritious meal preparation."
+        keywords={['supported living services', 'live in carer Nigeria', 'elderly care Abeokuta', 'domiciliary care Ogun State', 'medication management facility']}
+        canonical="/services"
+        badge="Supported Living & Care Services"
+        jsonLd={servicesJsonLd}
+      />
       {/* Page Header */}
       <section className="bg-gradient-to-br from-[#003399] to-blue-900 py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

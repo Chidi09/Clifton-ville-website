@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, Image as ImageIcon, Video, ChevronLeft, ChevronRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 // Import site layout image
 import siteLayoutImage from '../assets/site layout.jpg';
@@ -254,8 +255,24 @@ const Progress = () => {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [selectedMedia, navigateMedia, closeLightbox]);
 
+  const progressJsonLd = {
+    "@type": "CollectionPage",
+    "@id": "https://cliftonvillegardens.com/progress#webpage",
+    "name": "Construction & Development Progress - Cliftonville Gardens",
+    "description": "Latest August 2026 construction updates, architectural site layouts, and on-site video walkthroughs for Cliftonville Gardens.",
+    "url": "https://cliftonvillegardens.com/progress"
+  };
+
   return (
     <div>
+      <SEO
+        title="Development & Construction Progress"
+        description="Watch Cliftonville Gardens take shape. View verified August 2026 on-site photos, construction video walkthroughs, and master site layouts."
+        keywords={['Cliftonville progress', 'construction updates Nigeria', 'supported living development', 'Ogun state real estate progress']}
+        canonical="/progress"
+        badge="Development & Construction Progress"
+        jsonLd={progressJsonLd}
+      />
       {/* Page Header */}
       <section className="bg-gradient-to-br from-[#003399] to-blue-900 py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

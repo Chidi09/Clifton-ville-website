@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { 
   Shield, 
   Zap, 
@@ -482,8 +483,56 @@ const AbeokutaArena = () => {
     },
   ];
 
+  const abeokutaJsonLd = {
+    "@type": ["RealEstateListing", "SingleFamilyResidence", "Place"],
+    "@id": "https://cliftonvillegardens.com/abeokuta-arena#residence",
+    "name": "Abeokuta Residential Arena - Cliftonville Gardens",
+    "description": "Newly completed luxury turnkey residence and supported living community at GRA IBARA Housing Cluster 2, Abeokuta, Ogun State.",
+    "url": "https://cliftonvillegardens.com/abeokuta-arena",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "GRA IBARA Housing Cluster 2",
+      "addressLocality": "Abeokuta",
+      "addressRegion": "Ogun State",
+      "addressCountry": "NG"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 7.1475,
+      "longitude": 3.3619
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "24/7 Security", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Paved Road Network", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Reliable Power & Water", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Supported Living Care", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Designer Fitted Kitchen", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Master Suite with Balcony", "value": true }
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://cliftonvillegardens.com/abeokuta-arena#book-visit",
+        "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+      },
+      "result": {
+        "@type": "Reservation",
+        "name": "Site Inspection Booking"
+      }
+    }
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen font-sans">
+      <SEO
+        title="Abeokuta Residential Arena | GRA Ibara Turnkey Homes & Care"
+        description="Explore the newly finished Abeokuta Residential Arena in GRA Ibara Housing Cluster 2. 24/7 security, turnkey luxury homes, virtual video walkthroughs, and supported care."
+        keywords={['Abeokuta Residential Arena', 'GRA Ibara Abeokuta homes', 'supported living Abeokuta', 'turnkey homes Ogun State', 'Cliftonville Gardens subdivision']}
+        canonical="/abeokuta-arena"
+        badge="GRA Ibara Housing Cluster 2"
+        jsonLd={abeokutaJsonLd}
+      />
       {/* ============================================
           HERO SECTION
           ============================================ */}

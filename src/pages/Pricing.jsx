@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, HeartPulse, ShieldCheck, Sparkles } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const plans = [
   {
@@ -47,8 +48,24 @@ const plans = [
 ];
 
 const Pricing = () => {
+  const pricingJsonLd = {
+    "@type": "PriceSpecification",
+    "@id": "https://cliftonvillegardens.com/pricing#pricing",
+    "name": "Cliftonville Gardens Care Packages & Pricing",
+    "description": "Transparent supported living and care package pricing: Independent Retirement, Semi-Independent Assisted Living, and Dependent Nursing Care.",
+    "priceCurrency": "NGN"
+  };
+
   return (
     <div className="overflow-x-hidden bg-stone-50">
+      <SEO
+        title="Pricing & Care Packages | Transparent Rates"
+        description="Explore tailored care packages: Independent Retirement (₦1.2M), Semi-Independent Assisted Living (₦1.55M), and Dependent Nursing Care (₦2.3M)."
+        keywords={['supported living pricing Nigeria', 'assisted living cost Abeokuta', 'retirement home rates Ogun State', 'nursing care packages']}
+        canonical="/pricing"
+        badge="Tailored Care Packages"
+        jsonLd={pricingJsonLd}
+      />
       <section className="bg-gradient-to-br from-[#003399] to-blue-900 py-24 relative overflow-hidden text-white">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 right-0 w-[28rem] h-[28rem] bg-white rounded-full blur-3xl translate-x-1/3 -translate-y-1/3" />
