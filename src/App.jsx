@@ -8,6 +8,7 @@ import Facilities from './pages/Facilities';
 import Contact from './pages/Contact';
 import Progress from './pages/Progress';
 import Pricing from './pages/Pricing';
+import AbeokutaArena from './pages/AbeokutaArena';
 
 // Scroll to top on route change component
 const ScrollToTop = () => {
@@ -28,9 +29,11 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/facilities" element={<Facilities />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/progress" element={<Progress />} />
+          <Route path="/abeokuta-arena" element={<AbeokutaArena />} />
+          <Route path="/residential-arena" element={<AbeokutaArena />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
     </Router>

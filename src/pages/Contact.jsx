@@ -66,18 +66,21 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Our Address",
-      details: ["Itori, Ewekoro LGA", "Abeokuta, Ogun State", "Nigeria"],
+      title: "Our Locations",
+      details: [
+        "Abeokuta Arena: GRA IBARA Housing Cluster 2, Abeokuta",
+        "Main Campus: Itori, Ewekoro LGA, Ogun State",
+      ],
     },
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: ["+447846324245", "+234 8125935055"],
+      details: ["+234 812 593 5055 (Nigeria)", "+44 7846 324245 (UK / Int'l)"],
     },
     {
       icon: Mail,
-      title: "Email Address",
-      details: ["info@cliftonvillegardens.com"],
+      title: "Email Addresses",
+      details: ["Laidegr.Cliftonville@outlook.com", "info@cliftonvillegardens.com"],
     },
     {
       icon: Clock,
@@ -158,9 +161,15 @@ const Contact = () => {
                     <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
                       <MapPin className="text-[#f59e0b]" size={24} />
                     </div>
-                    <div>
-                      <h3 className="font-bold mb-1">Visit Us</h3>
-                      <p className="text-blue-200 text-sm">Itori, Ewekoro LGA, Abeokuta, Ogun State, Nigeria</p>
+                    <div className="space-y-2">
+                      <div>
+                        <h3 className="font-bold text-sm text-amber-300">Abeokuta Arena</h3>
+                        <p className="text-blue-200 text-xs">GRA IBARA Housing Cluster 2, Abeokuta, Ogun State</p>
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-sm text-amber-300">Main Campus</h3>
+                        <p className="text-blue-200 text-xs">Itori, Ewekoro LGA, Ogun State, Nigeria</p>
+                      </div>
                     </div>
                   </div>
 
@@ -170,8 +179,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Call Us</h3>
-                      <p className="text-blue-200 text-sm">+447846324245</p>
-                      <p className="text-blue-200 text-sm">+234 8125935055</p>
+                      <p className="text-blue-200 text-sm"><a href="tel:+2348125935055" className="hover:underline">+234 812 593 5055 (Nigeria)</a></p>
+                      <p className="text-blue-200 text-sm"><a href="tel:+447846324245" className="hover:underline">+44 7846 324245 (UK / Int'l)</a></p>
                     </div>
                   </div>
 
@@ -181,7 +190,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Email Us</h3>
-                      <p className="text-blue-200 text-sm">info@cliftonvillegardens.com</p>
+                      <p className="text-blue-200 text-xs break-all"><a href="mailto:Laidegr.Cliftonville@outlook.com" className="hover:underline">Laidegr.Cliftonville@outlook.com</a></p>
+                      <p className="text-blue-200 text-xs break-all"><a href="mailto:info@cliftonvillegardens.com" className="hover:underline">info@cliftonvillegardens.com</a></p>
                     </div>
                   </div>
                 </div>

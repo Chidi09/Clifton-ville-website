@@ -5,68 +5,41 @@ import { X, Play, Image as ImageIcon, Video, ChevronLeft, ChevronRight } from 'l
 // Import site layout image
 import siteLayoutImage from '../assets/site layout.jpg';
 
-// Import new project images
-import img1 from '../assets/img1.jpeg';
-import img2 from '../assets/img2.jpeg';
-import img3 from '../assets/img3.jpeg';
-import img4 from '../assets/img4.jpeg';
-import img5 from '../assets/img5.jpeg';
-import img6 from '../assets/img6.jpeg';
-import img7 from '../assets/img7.jpeg';
-import img8 from '../assets/img8.jpeg';
-import img9 from '../assets/img9.jpeg';
-import img10 from '../assets/img10.jpeg';
-import img11 from '../assets/img11.jpeg';
+// Latest construction images (August 2026)
+import imgAug25_1 from '../assets/construction/WhatsApp-Image-2026-08-25-3.13.27-PM.jpeg';
+import imgAug25_2 from '../assets/construction/WhatsApp-Image-2026-08-25-3.13.27-PM-1.jpeg';
+import imgAug25_3 from '../assets/construction/WhatsApp-Image-2026-08-25-3.13.28-PM.jpeg';
+import imgAug25_4 from '../assets/construction/WhatsApp-Image-2026-08-25-3.13.28-PM-1.jpeg';
+import imgAug25_5 from '../assets/construction/WhatsApp-Image-2026-08-25-3.14.20-PM.jpeg';
+import imgAug25_6 from '../assets/construction/WhatsApp-Image-2026-08-25-3.14.21-PM.jpeg';
+import imgAug25_7 from '../assets/construction/WhatsApp-Image-2026-08-25-3.14.21-PM-1.jpeg';
+import imgAug25_8 from '../assets/construction/WhatsApp-Image-2026-08-25-3.14.21-PM-2.jpeg';
+import imgAug25_9 from '../assets/construction/WhatsApp-Image-2026-08-25-3.14.50-PM.jpeg';
+
+// Latest construction videos (August 2026)
+import vidAug25_1 from '../assets/construction/WhatsApp-Video-2026-08-25-3.13.27-PM.mp4';
+import vidAug25_2 from '../assets/construction/WhatsApp-Video-2026-08-25-3.13.27-PM-1.mp4';
+import vidAug25_3 from '../assets/construction/WhatsApp-Video-2026-08-25-3.14.06-PM.mp4';
+import vidAug25_4 from '../assets/construction/WhatsApp-Video-2026-08-25-3.16.04-PM.mp4';
 
 const constructionImages = [
-  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11,
-  imgApr19_1, imgApr19_2,
-  imgJun01_1, imgJun01_2, imgJun01_3, imgJun01_4, imgJun01_5, imgJun01_6, imgJun01_7, imgJun01_8,
+  imgAug25_1,
+  imgAug25_2,
+  imgAug25_3,
+  imgAug25_4,
+  imgAug25_5,
+  imgAug25_6,
+  imgAug25_7,
+  imgAug25_8,
+  imgAug25_9,
 ];
 
-// Latest videos from March 2026
-import vidMar15_1 from '../assets/construction/WhatsApp Video 2026-03-15 at 10.40.54 PM.mp4';
-import vidMar15_2 from '../assets/construction/WhatsApp Video 2026-03-15 at 10.52.25 PM.mp4';
-import vidMar15_3 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.11.32 PM.mp4';
-import vidMar15_4 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.13.06 PM.mp4';
-import vidMar15_5 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.21.01 PM.mp4';
-import vidMar15_6 from '../assets/construction/WhatsApp Video 2026-03-15 at 11.21.22 PM.mp4';
-
-// Latest videos from April 2026
-import vidApr19_1 from '../assets/construction/WhatsApp Video 2026-04-19 at 3.45.14 PM.mp4';
-import vidApr19_2 from '../assets/construction/WhatsApp Video 2026-04-19 at 3.45.19 PM.mp4';
-
-// Latest images from April 2026
-import imgApr19_1 from '../assets/construction/WhatsApp Image 2026-04-19 at 3.45.15 PM.jpeg';
-import imgApr19_2 from '../assets/construction/WhatsApp Image 2026-04-19 at 3.45.15 PM (1).jpeg';
-
-// Latest images from June 2026
-import imgJun01_1 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.39 PM.jpeg';
-import imgJun01_2 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.39 PM (1).jpeg';
-import imgJun01_3 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.39 PM (2).jpeg';
-import imgJun01_4 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.40 PM.jpeg';
-import imgJun01_5 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.40 PM (1).jpeg';
-import imgJun01_6 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.41 PM.jpeg';
-import imgJun01_7 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.41 PM (1).jpeg';
-import imgJun01_8 from '../assets/construction/WhatsApp Image 2026-06-01 at 2.04.41 PM (2).jpeg';
-
-// Latest videos from June 2026
-import vidJun01_1 from '../assets/construction/WhatsApp Video 2026-06-01 at 2.04.43 PM.mp4';
-import vidJun01_2 from '../assets/construction/WhatsApp Video 2026-06-01 at 2.04.51 PM.mp4';
-import vidJun01_3 from '../assets/construction/WhatsApp Video 2026-06-01 at 2.05.04 PM.mp4';
-
+// Construction videos
 const constructionVideos = [
-  vidMar15_1,
-  vidMar15_2,
-  vidMar15_3,
-  vidMar15_4,
-  vidMar15_5,
-  vidMar15_6,
-  vidApr19_1,
-  vidApr19_2,
-  vidJun01_1,
-  vidJun01_2,
-  vidJun01_3,
+  vidAug25_1,
+  vidAug25_2,
+  vidAug25_3,
+  vidAug25_4,
 ];
 
 // Lightbox component for viewing media
@@ -385,16 +358,24 @@ const Progress = () => {
       {/* Media Gallery */}
       <section className="py-12 md:py-20 bg-gradient-to-b from-white via-slate-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3 lg:gap-4">
-            {filteredMedia.map((item, idx) => (
-              <MediaItem
-                key={idx}
-                item={item}
-                idx={idx}
-                onOpenLightbox={openLightbox}
-              />
-            ))}
-          </div>
+          {filteredMedia.length === 0 ? (
+            <div className="text-center py-16 bg-slate-50 rounded-3xl border border-slate-200 max-w-xl mx-auto">
+              <Video className="mx-auto text-slate-400 mb-3" size={40} />
+              <h3 className="text-xl font-bold text-slate-800 mb-1">New Videos Coming Soon</h3>
+              <p className="text-slate-500 text-sm">We are currently updating our on-site video records. Check out our photo progress gallery above!</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3 lg:gap-4">
+              {filteredMedia.map((item, idx) => (
+                <MediaItem
+                  key={idx}
+                  item={item}
+                  idx={idx}
+                  onOpenLightbox={openLightbox}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

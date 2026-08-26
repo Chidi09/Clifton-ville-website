@@ -38,6 +38,13 @@ import img9 from '../assets/img9.jpeg';
 import img10 from '../assets/img10.jpeg';
 import img11 from '../assets/img11.jpeg';
 
+// Import Abeokuta subdivision assets
+import abeokutaHeroImg from '../assets/abeokuta/exterior-night-front.jpeg';
+import abeokutaAerialImg from '../assets/abeokuta/exterior-night-aerial.jpeg';
+import abeokutaThumbLiving from '../assets/abeokuta/thumb-living-room.jpg';
+import abeokutaThumbKitchen from '../assets/abeokuta/thumb-kitchen.jpg';
+import abeokutaThumbBedroom from '../assets/abeokuta/thumb-bedroom.jpg';
+
 const whatsappImages = [whatsappImg1, whatsappImg2, whatsappImg3, whatsappImg4, whatsappImg5, whatsappImg6];
 
 // Slideshow data with descriptions for Home page
@@ -534,6 +541,134 @@ const Home = () => {
                 <ChevronRight size={24} />
               </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          NEW SUBDIVISION SPOTLIGHT: ABEOKUTA RESIDENTIAL ARENA
+          ============================================ */}
+      <section className="py-20 md:py-28 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white relative overflow-hidden">
+        {/* Background ambient glow */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Information & Proposition */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-6"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-200 font-bold text-xs uppercase tracking-wider mb-6">
+                <Star size={14} className="fill-sky-400 text-sky-400" /> New Subdivision Announced
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                Abeokuta <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-blue-200 to-white">
+                  Residential Arena
+                </span>
+              </h2>
+
+              <div className="flex items-center gap-2 text-slate-300 text-sm md:text-base mb-6">
+                <MapPin size={18} className="text-sky-400 shrink-0" />
+                <span>GRA IBARA Housing Cluster 2, Abeokuta, Ogun State</span>
+              </div>
+
+              <p className="text-slate-300 text-base md:text-lg mb-8 leading-relaxed font-light">
+                <strong className="text-white font-semibold">Invest in Your Tomorrow. Own a Home in Cliftonville Gardens Today!</strong> Join a growing community of proud homeowners investing in a better lifestyle, a safer tomorrow, and a greater future.
+              </p>
+
+              {/* Key Features Grid */}
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                {[
+                  { title: "24/7 Security", desc: "Safe and worry-free living" },
+                  { title: "Good Road Network", desc: "Easy access within estate" },
+                  { title: "Reliable Utilities", desc: "Constant power & water" },
+                  { title: "Best Care Services", desc: "Live-in & domiciliary care" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-2xl p-3.5">
+                    <CheckCircle2 size={18} className="text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-bold text-white text-sm">{item.title}</h4>
+                      <p className="text-xs text-slate-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <Link
+                  to="/abeokuta-arena"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-full font-bold text-base shadow-lg shadow-sky-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  Explore Arena & Tour <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/abeokuta-arena#book-visit"
+                  className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 rounded-full font-bold text-base transition-all hover:scale-105 flex items-center justify-center"
+                >
+                  Book a Site Visit
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Visual Showcase Preview */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-6 space-y-4"
+            >
+              {/* Main Image */}
+              <Link to="/abeokuta-arena" className="block group relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-[16/10] bg-slate-900">
+                <img
+                  src={abeokutaHeroImg}
+                  alt="Abeokuta Residential Arena Front View"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
+                  <div className="inline-block px-3 py-1 bg-sky-500/90 text-white text-xs font-bold rounded-full w-fit mb-2">
+                    Turnkey Architectural Marvel
+                  </div>
+                  <h3 className="text-white font-bold text-xl">Exclusive Masterpiece in GRA Ibara</h3>
+                  <p className="text-slate-300 text-xs mt-1">Click to view 6 full video tours & interior showcases →</p>
+                </div>
+              </Link>
+
+              {/* Thumbnails Row */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { img: abeokutaThumbLiving, title: "Living Lounge" },
+                  { img: abeokutaThumbKitchen, title: "Modern Kitchen" },
+                  { img: abeokutaThumbBedroom, title: "Luxury Suite" },
+                ].map((thumb, idx) => (
+                  <Link
+                    key={idx}
+                    to="/abeokuta-arena"
+                    className="group relative rounded-2xl overflow-hidden aspect-video border border-white/10 shadow-md"
+                  >
+                    <img
+                      src={thumb.img}
+                      alt={thumb.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <span className="text-[11px] font-bold text-white bg-black/60 px-2 py-0.5 rounded-md backdrop-blur-xs">
+                        {thumb.title}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>

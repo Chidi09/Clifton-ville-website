@@ -49,6 +49,7 @@ const Layout = ({ children }) => {
     { name: 'Facilities', path: '/facilities' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Work in Progress', path: '/progress' },
+    { name: 'Abeokuta Arena', path: '/abeokuta-arena', badge: 'New' },
   ];
 
   const socialLinks = [
@@ -63,10 +64,11 @@ const Layout = ({ children }) => {
       {/* Top Bar - Sleek & Dark */}
       <div className="bg-slate-900 text-slate-300 text-xs py-2.5 hidden lg:block tracking-wide">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <span className="opacity-80">A Supported Living Community for Adults (18+)</span>
+          <span className="opacity-80">A Supported Living Community for Adults (18+) • Abeokuta & Itori</span>
           <div className="flex gap-8">
-            <a href="tel:+447846324245" className="flex items-center gap-2 hover:text-white transition-colors"><Phone size={13}/> +447846324245</a>
-            <a href="mailto:info@cliftonvillegardens.com" className="flex items-center gap-2 hover:text-white transition-colors"><Mail size={13}/> info@cliftonvillegardens.com</a>
+            <a href="tel:+2348125935055" className="flex items-center gap-2 hover:text-white transition-colors"><Phone size={13}/> +234 812 593 5055</a>
+            <a href="tel:+447846324245" className="flex items-center gap-2 hover:text-white transition-colors"><Phone size={13}/> +44 7846 324245</a>
+            <a href="mailto:Laidegr.Cliftonville@outlook.com" className="flex items-center gap-2 hover:text-white transition-colors"><Mail size={13}/> Laidegr.Cliftonville@outlook.com</a>
           </div>
         </div>
       </div>
@@ -90,14 +92,19 @@ const Layout = ({ children }) => {
           </Link>
           
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-8 font-medium">
+          <div className="hidden lg:flex items-center gap-7 font-medium">
             {navLinks.map((link) => (
               <Link 
                 key={link.name}
                 to={link.path} 
-                className={`text-sm transition-colors duration-300 relative py-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-sky-600 after:transition-all hover:after:w-full ${location.pathname === link.path ? "text-sky-600 after:w-full" : "text-slate-600 hover:text-sky-600"}`}
+                className={`text-sm transition-colors duration-300 relative py-4 flex items-center gap-1.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-sky-600 after:transition-all hover:after:w-full ${location.pathname === link.path ? "text-sky-600 after:w-full" : "text-slate-600 hover:text-sky-600"}`}
               >
                 {link.name}
+                {link.badge && (
+                  <span className="px-1.5 py-0.5 text-[10px] uppercase font-extrabold bg-amber-400 text-slate-900 rounded-full leading-none shadow-sm">
+                    {link.badge}
+                  </span>
+                )}
               </Link>
             ))}
             <Link to="/contact" className="bg-sky-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:bg-sky-500 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
@@ -214,19 +221,32 @@ const Layout = ({ children }) => {
           </div>
 
           <div>
-            <h4 className="text-white font-bold text-lg mb-6">Visit Us</h4>
+            <h4 className="text-white font-bold text-lg mb-6">Visit & Contact Us</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin className="text-sky-400 shrink-0" size={18} />
-                <span className="text-white">Itori, Ewekoro LGA, Abeokuta,<br/>Ogun State, Nigeria</span>
+                <MapPin className="text-sky-400 shrink-0 mt-0.5" size={18} />
+                <div className="text-white text-xs leading-relaxed">
+                  <strong className="block text-white font-semibold">Abeokuta Arena:</strong>
+                  GRA IBARA Housing cluster 2, Abeokuta, Ogun State
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="text-sky-400 shrink-0 mt-0.5" size={18} />
+                <div className="text-white text-xs leading-relaxed">
+                  <strong className="block text-white font-semibold">Itori Campus:</strong>
+                  Itori, Ewekoro LGA, Ogun State, Nigeria
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-sky-400 shrink-0" size={18} />
-                <span className="text-white">+447846324245<br/>+234 8125935055</span>
+                <span className="text-white text-xs">+234 812 593 5055<br/>+44 7846 324245</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-sky-400 shrink-0" size={18} />
-                <span className="break-all text-white">info@cliftonvillegardens.com</span>
+                <div className="text-white text-xs break-all">
+                  <span>Laidegr.Cliftonville@outlook.com</span><br />
+                  <span>info@cliftonvillegardens.com</span>
+                </div>
               </li>
             </ul>
           </div>
