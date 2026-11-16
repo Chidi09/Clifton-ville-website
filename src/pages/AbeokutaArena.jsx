@@ -398,7 +398,7 @@ const AbeokutaArena = () => {
     setSubmitError('');
 
     try {
-      const response = await fetch('https://formspree.io/f/xvgedroq', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
